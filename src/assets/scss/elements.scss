@@ -1,0 +1,216 @@
+.nav.nav-tabs  {
+    border: unset;
+
+    li {
+
+        button {
+            color: $color_primary_dark;
+            background: transparent;
+            font-weight: 600;
+            border-radius: unset;
+            padding: .5em 1em;
+            border: unset;
+            outline: black solid 1px;
+
+            &:hover,
+            &:active,
+            &:focus {
+                cursor: pointer;
+            }
+
+            &.active {
+                background: $color_primary;
+            }
+        }
+    }
+}
+
+.tab-content {
+    background: transparent;
+    padding: 1em 0 0 0;
+
+    .tab-pane {
+
+    }
+}
+
+form {
+    border: $color_outline solid 1px;
+    border-radius: .25em;
+    padding: 1em !important;
+    margin: 1em 0;
+    max-width: 400px;
+
+    div {
+        padding: 0 0 1em 0 !important;
+    }
+
+    .form-control {
+        padding: .25em .5em !important;
+
+        &:focus,
+        &:focus-visible,
+        &:focus-within,
+        &:target {
+            box-shadow: 0 0 0 0.25rem $color_primary;
+        }
+    }
+
+    .submit-container {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 1em;
+        padding: 1em 0;
+    }
+}
+
+table {
+
+    thead {
+        tr {
+            border-color: transparent;
+            th {
+                font-weight: 800;
+                background: transparent !important;
+                outline: $color_outline solid 1px;
+                min-width: 100px;
+            }
+        }
+    }
+    tbody {
+        tr {
+            border-color: transparent;
+            transition: .25s;
+            min-width: 100px;
+
+            &:hover, &:active {
+                background: rgba(0,0,0, .05) !important;
+            }
+            td {
+                background: transparent !important;
+                outline: $color_outline solid 1px;
+            }
+        }
+    }
+}
+
+.alert-container {
+    position: absolute;
+    top: .5em;
+    left: 50%;
+    right: unset;
+    bottom: unset;
+    transform: translateX(-50%);
+    width: calc(100% - 1em);
+    max-width: calc(1400px - 2em);
+    
+    .alert {
+        // outline: red solid 1px;
+        position: relative;
+        
+        padding: .5em 1em;
+        border-width: 3px;
+        border-color: $color_primary_dark;
+    
+        &.alert-primary {
+            background: rgba(0, 0, 0, 0.85);
+            color: $color_primary;
+            border-color: $color_primary;
+        }
+        &.alert-secondary {
+    
+        }
+        &.alert-success {
+    
+        }
+        &.alert-danger {
+    
+        }
+        &.alert-warning {
+    
+        }
+        &.alert-info {
+            background: $color_primary_light;
+            color: $color_primary_dark;
+        }
+        &.alert-light {
+            background: $color_primary_light;
+            color: $color_primary_dark;
+        }
+        &.alert-dark {
+            background: $color_primary_dark;
+            color: $color_primary_light;
+        }
+    
+        .btn-close {
+            display: none;
+            position: absolute;
+            top: .5em;
+            right: .5em;
+            left: unset;
+            bottom: unset;
+
+            border-radius: unset;
+    
+            width: 2em;
+            height: calc(100% - 1em);
+    
+            padding: 0;
+        }
+    }
+}
+
+.hstack {
+
+    .badge {
+        padding: .25em .75em;
+        border-radius: 3px;
+
+        &.bg-primary {
+            background: $color_primary_dark !important;
+            color: $color_primary_light;
+        }
+
+        &.bg-light {
+            color: $color_primary_dark;
+        }
+
+        &.bg-freelance {
+            background: $color_primary !important;
+            color: $color_primary_dark;
+        }
+
+        &.bg-agency {
+            background: $color_primary_dark !important;
+            color: $color_primary_light;
+        }
+    }
+}
+
+.accordion {
+    margin:1em 0 2em 0;
+
+    .accordion-item {
+        background: transparent;
+        border: unset;
+        outline: unset;
+
+        .accordion-header {
+            .accordion-button {
+                background: transparent;
+                color: $color_primary_dark;
+                font-weight: 800;
+                padding: 1em !important;
+                border: unset;
+                border-radius: .25em;
+                box-shadow: unset;
+                outline: $color_outline solid 1px;
+            }
+        }
+
+        .accordion-body {
+
+        }
+        
+    }
+}

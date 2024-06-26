@@ -1,0 +1,62 @@
+
+$color_primary: #5fdbf8;
+$color_primary_dark: #000;
+$color_primary_light: #FFF;
+$color_outline: rgba(0,0,0,.25);
+
+// Override bootstrap variables
+.btn-primary {
+    @include button-variant($color_primary, darken($color_primary, 7.5%), darken($color_primary, 10%), lighten($color_primary,5%), lighten($color_primary, 10%), darken($color_primary,30%));
+}
+
+// Testing
+
+.media-query::before {
+    content: " ";
+    width: 1em;
+    height: 1em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: unset;
+    right: unset;
+    z-index: 99999999;
+}
+
+/* -- ##Device = Desktops -- */
+
+@media (min-width: 1281px) {
+    .media-query::before {
+      background: red !important;
+    }
+  }
+  
+  // /* -- ##Device = Laptops, Desktops -- */
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    .media-query::before {
+      background: orange !important;
+    }
+  }
+  
+  // /* -- ##Device = Tablets, Ipads (landscape) -- */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .media-query::before {
+      background: green !important;
+    }
+  }
+  
+  // // $flex-basis-x: calc((767px / 2));
+  // /* -- ##Device = Low Resolution Tablets, Mobiles (Landscape) -- */
+  @media (min-width: 481px) and (max-width: 767px) {
+    .media-query::before {
+      background: blue !important;
+    }
+  }
+  
+  /* -- ##Device = Most of the Smartphones Mobiles (Portrait) -- */
+  @media (min-width: 320px) and (max-width: 480px) {
+    .media-query::before {
+      background: purple !important;
+    }
+  }
+

@@ -1,0 +1,69 @@
+
+@import './../node_modules/bootstrap/scss/bootstrap.scss';
+@import './assets/scss/style-variables.scss';
+
+html, body {
+  font-family: Arial;
+  font-size: 16px;
+  background: #efefef;
+  line-height: 1.25em;
+  min-width: 350px;
+}
+
+p {
+  font-family: Arial;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  position: relative;
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+
+  min-height: calc(100vh - 2.75em);
+  outline: #000 solid 1px;
+}
+
+.row {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 .5em;
+
+  * {
+    padding: 0;
+  }
+}
+
+.col {
+  outline: $color_outline solid 1px;
+
+  @media(max-width: 575px) {
+    flex: 1 1 100%;
+  }
+}
+
+.btn {
+  background: $color_primary_light;
+  border: $color_primary_dark solid 1px;
+  color:$color_primary_dark;
+  font-weight: 800;
+  padding: .25em 1em;
+  cursor: pointer;
+
+  &:hover, &:active, &:focus {
+    background: $color_primary;
+    border: $color_primary solid 1px;
+    color:$color_primary_dark;
+  }
+}
+
+@import './assets/scss/elements.scss';
+@import './assets/scss/components.scss';
+  
