@@ -29,8 +29,8 @@ const Navigation = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <ul>
-                            <li><Link to="/">Item</Link></li>
-                                                   
+                            <li><Link to="/dashboard">Dashboard</Link></li>                     
+                            <li><Link to="/projects">Projects</Link></li>                           
                         </ul>
                     </Nav>
                 </Navbar.Collapse>
@@ -39,7 +39,7 @@ const Navigation = () => {
                         <ul>
                    
                         </ul>
-                    </Nav>
+                    </Nav> 
                 </div>
             </Navbar>
         </>
