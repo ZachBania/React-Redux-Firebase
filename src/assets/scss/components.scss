@@ -232,3 +232,61 @@ footer {
         padding: 1em 0 1em 2em;
     }
 }
+
+// Container Components
+
+.dashboard-container {
+    
+    .col {
+        padding: 1em;
+    }
+}
+
+.create-project-container {
+
+    form {
+        max-width: 100%;
+        display: flex;
+        gap: .5em 1em;
+        flex-wrap: wrap;
+
+        div {
+            flex: 1 1 100%;
+            // padding: .5em !important;
+            
+            @media(min-width:768px) {
+                flex: 1 1 calc((100% / 2) - 1em);
+            }
+
+            &.submit-container {
+                flex: 1 1 100%;
+            }
+        }
+    }
+}
+
+.projects-list-container {
+    padding: 0 0 1em 0;
+
+    table {
+        thead {
+            tr {
+                th {
+    
+                }
+            }
+        }
+        tbody {
+            tr {
+                &:hover,
+                &:active,
+                &:focus {
+                    // outline: $color_primary solid 5px !important;
+                    cursor: pointer;
+                }
+                td {
+                }
+            }
+        }
+    }
+}

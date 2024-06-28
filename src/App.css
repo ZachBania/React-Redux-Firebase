@@ -12307,226 +12307,6 @@ footer .row .col a:focus {
   margin: 0 0 1em 0;
 }
 
-.dashboard-container {
-  padding: 1em;
-}
-@media (min-width: 768px) {
-  .dashboard-container {
-    padding: 1em 1em 1em 2em;
-  }
-}
-.dashboard-container h2, .dashboard-container .h2 {
-  font-size: 1.5em;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.projects-container {
-  flex-direction: column-reverse;
-}
-@media (min-width: 992px) {
-  .projects-container {
-    flex-direction: row;
-  }
-}
-.projects-container .col:nth-child(1) {
-  font-size: 16px;
-}
-@media (min-width: 992px) {
-  .projects-container .col:nth-child(1) {
-    padding: 0 0 0 2em;
-  }
-}
-.projects-container .col:nth-child(1) .project--inner-container {
-  padding: 0.25em;
-}
-@media (min-width: 768px) {
-  .projects-container .col:nth-child(1) .project--inner-container {
-    padding: 0.5em;
-  }
-}
-.projects-container .col:nth-child(1) .project--inner-container .project-id {
-  margin: 0;
-  padding: 0;
-}
-.projects-container .col:nth-child(1) .project--inner-container .project-name-container {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 0 1em;
-  justify-content: base;
-}
-.projects-container .col:nth-child(1) .project--inner-container .project-name-container .project-name {
-  font-size: 1.5em;
-  margin: 0 0 0.25em 0;
-  padding: 0;
-}
-.projects-container .col:nth-child(1) .project--inner-container .project-excerpt {
-  margin: 0 0 1em 0;
-  padding: 0;
-}
-.projects-container .col:nth-child(1) .project--inner-container .project-meta {
-  margin: 0;
-  padding: 0;
-}
-@media (min-width: 768px) {
-  .projects-container .col:nth-child(2) {
-    padding: 0.5em;
-  }
-}
-@media (min-width: 992px) {
-  .projects-container .col:nth-child(2) {
-    padding: 1em;
-  }
-}
-
-.add-project-container form {
-  max-width: 100%;
-  display: flex;
-  gap: 0.5em 1em;
-  flex-wrap: wrap;
-}
-.add-project-container form div {
-  flex: 1 1 100%;
-}
-@media (min-width: 768px) {
-  .add-project-container form div {
-    flex: 1 1 calc(50% - 1em);
-  }
-}
-.add-project-container form div.submit-container {
-  flex: 1 1 100%;
-}
-
-.project-detail-container {
-  max-width: 1050px;
-  padding: 1em 0;
-}
-@media (min-width: 768px) {
-  .project-detail-container {
-    padding: 1em 0 1em 2em;
-  }
-}
-.project-detail-container p {
-  margin: 0 0 1em 0;
-}
-
-.projects-panel-container {
-  padding: 0 0 1em 0;
-}
-.projects-panel-container h2, .projects-panel-container .h2 {
-  margin: 0 0 1em 0 !important;
-}
-.projects-panel-container table tbody tr:hover, .projects-panel-container table tbody tr:active, .projects-panel-container table tbody tr:focus {
-  cursor: pointer;
-}
-.recently-viewed-list-container {
-  padding: 0.5em;
-  border: rgba(0, 0, 0, 0.25) solid 2.5px;
-  border-radius: 0.5em;
-}
-.recently-viewed-list-container h3, .recently-viewed-list-container .h3 {
-  font-size: 1em;
-  text-decoration: underline;
-  margin: 0 0 0.75em 0;
-  padding: 0;
-}
-.recently-viewed-list-container .recently-viewed-list {
-  margin: 0;
-  padding: 0;
-}
-.recently-viewed-list-container .recently-viewed-list li {
-  margin: 0 0 0.5em 0;
-}
-.recently-viewed-list-container .recently-viewed-list li:last-child {
-  margin: 0;
-}
-.recently-viewed-list-container .recently-viewed-list li a:link,
-.recently-viewed-list-container .recently-viewed-list li a:visited {
-  color: #000;
-  padding: 0.25em 1em 0.25em 0;
-  text-decoration: none;
-  transition: 0.5s;
-}
-.recently-viewed-list-container .recently-viewed-list li a:link .id,
-.recently-viewed-list-container .recently-viewed-list li a:visited .id {
-  background: #000;
-  color: #FFF;
-  font-weight: 800;
-  display: inline-block;
-  border-radius: 0.25em;
-  width: 1.75em;
-  text-align: center;
-  margin: 0 0.5em 0 0;
-}
-.recently-viewed-list-container .recently-viewed-list li a:hover,
-.recently-viewed-list-container .recently-viewed-list li a:active,
-.recently-viewed-list-container .recently-viewed-list li a:focus {
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.update-project-container {
-  padding: 1em;
-}
-@media (min-width: 768px) {
-  .update-project-container {
-    padding: 1em 1em 1em 2em;
-  }
-}
-.update-project-container form {
-  max-width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 1em;
-}
-.update-project-container form div {
-  flex: 1 1 100%;
-}
-@media (min-width: 768px) {
-  .update-project-container form div {
-    flex: 1 1 calc(50% - 1em);
-  }
-}
-.update-project-container form div.submit-container {
-  flex-wrap: wrap;
-}
-.update-project-container form div.submit-container p {
-  flex: 1 1 100%;
-}
-@media (max-width: 767px) {
-  .update-project-container form div.submit-container p .btn {
-    width: 100%;
-    text-align: left;
-  }
-}
-@media (min-width: 768px) {
-  .update-project-container form div.submit-container p {
-    flex: 0 0 auto;
-  }
-}
-
-.profile-container {
-  padding: 1em 0 0 0;
-}
-.profile-container h2, .profile-container .h2 {
-  margin: 0 0 0.75em 0 !important;
-}
-.profile-container .btn {
-  margin: 1em 0 0 0;
-}
-
-@media (min-width: 768px) {
-  .update-profile-container {
-    padding: 0 0 0 2em;
-  }
-}
-
-@media (min-width: 768px) {
-  .login-container {
-    padding: 0 0 0 2em;
-  }
-}
-
 .notAuthorized-container,
 .pageNotFound-container {
   padding: 1em 0;
@@ -12538,37 +12318,33 @@ footer .row .col a:focus {
   }
 }
 
-.user-panel-container {
-  display: none;
-  width: 100%;
-  border-radius: 0.25em;
-  padding: 0.5em;
-}
-@media (min-width: 768px) {
-  .user-panel-container {
-    display: block;
-    min-height: 12.5em;
-  }
-}
-.user-panel-container p {
-  padding: 0;
-  margin: 0 0 0.25em 0 !important;
-}
-.user-panel-container a:link,
-.user-panel-container a:visited {
-  color: #000;
-}
-.user-panel-container a:hover,
-.user-panel-container a:active,
-.user-panel-container a:focus {
-  color: #5fdbf8;
+.dashboard-container .col {
+  padding: 1em;
 }
 
-.users-panel-container {
+.create-project-container form {
+  max-width: 100%;
+  display: flex;
+  gap: 0.5em 1em;
+  flex-wrap: wrap;
+}
+.create-project-container form div {
+  flex: 1 1 100%;
+}
+@media (min-width: 768px) {
+  .create-project-container form div {
+    flex: 1 1 calc(50% - 1em);
+  }
+}
+.create-project-container form div.submit-container {
+  flex: 1 1 100%;
+}
+
+.projects-list-container {
   padding: 0 0 1em 0;
 }
-.users-panel-container h2, .users-panel-container .h2 {
-  margin: 0.5em 0 1em 0 !important;
+.projects-list-container table tbody tr:hover, .projects-list-container table tbody tr:active, .projects-list-container table tbody tr:focus {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=App.css.map */

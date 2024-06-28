@@ -1,29 +1,31 @@
 // Core Imports
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
-// Component Imports
+//Component Import
 import StaticHeader from "../parts/StaticHeader";
 
-// Bootstrap Imports
-import { Row, Col, Accordion } from "react-bootstrap";
+// Bootstrap Imports 
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
-export default function Dashboard() {
+
+export default function Projects() {
+
 
     return (
         <>
             <Row>
                 <Col className={'col'} sm="12" md="12" lg="12" xl="12" xxl="12">
-                    <StaticHeader headerText={"Dashboard"} />
+                    <StaticHeader headerText="Projects" />
                 </Col>
             </Row>
 
-            <Row>
+            <Row className='row project-list-container'>
                 <Col className={'col'} sm="12" md="12" lg="12" xl="12" xxl="12">
-                    
+
                 </Col>
             </Row>
-
         </>
     )
 }

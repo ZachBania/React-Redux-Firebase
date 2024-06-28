@@ -15,7 +15,7 @@ function Home() {
     <>
         <Row>
             <Col className={'col'} sm="true" md="true" lg="true" xl="true" xxl="true">
-                <DefaultHeader headerText="React"/>
+                <DefaultHeader headerText="React Redux"/>
             </Col>
         </Row>  
 
