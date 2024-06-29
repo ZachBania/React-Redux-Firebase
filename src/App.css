@@ -12028,52 +12028,6 @@ table tbody tr td {
   outline: rgba(0, 0, 0, 0.25) solid 1px;
 }
 
-.alert-container {
-  position: absolute;
-  top: 0.5em;
-  left: 50%;
-  right: unset;
-  bottom: unset;
-  transform: translateX(-50%);
-  width: calc(100% - 1em);
-  max-width: calc(1400px - 2em);
-}
-.alert-container .alert {
-  position: relative;
-  padding: 0.5em 1em;
-  border-width: 3px;
-  border-color: #000;
-}
-.alert-container .alert.alert-primary {
-  background: rgba(0, 0, 0, 0.85);
-  color: #5fdbf8;
-  border-color: #5fdbf8;
-}
-.alert-container .alert.alert-info {
-  background: #FFF;
-  color: #000;
-}
-.alert-container .alert.alert-light {
-  background: #FFF;
-  color: #000;
-}
-.alert-container .alert.alert-dark {
-  background: #000;
-  color: #FFF;
-}
-.alert-container .alert .btn-close {
-  display: none;
-  position: absolute;
-  top: 0.5em;
-  right: 0.5em;
-  left: unset;
-  bottom: unset;
-  border-radius: unset;
-  width: 2em;
-  height: calc(100% - 1em);
-  padding: 0;
-}
-
 .hstack .badge {
   padding: 0.25em 0.75em;
   border-radius: 3px;
@@ -12322,6 +12276,41 @@ footer .row .col a:focus {
   padding: 1em;
 }
 
+.project-container .col {
+  outline: rgba(0, 0, 0, 0.25) solid 1px;
+}
+.project-container .col .project--inner-container {
+  padding: 0.25em;
+}
+@media (min-width: 768px) {
+  .project-container .col .project--inner-container {
+    padding: 0.5em;
+  }
+}
+.project-container .col .project--inner-container .project-id {
+  margin: 0;
+  padding: 0;
+}
+.project-container .col .project--inner-container .project-header-container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0 1em;
+  justify-content: base;
+}
+.project-container .col .project--inner-container .project-header-container .project-header {
+  font-size: 1.5em;
+  margin: 0 0 0.25em 0;
+  padding: 0;
+}
+.project-container .col .project--inner-container .project-excerpt {
+  margin: 0 0 1em 0;
+  padding: 0;
+}
+.project-container .col .project--inner-container .project-meta {
+  margin: 0;
+  padding: 0;
+}
+
 .create-project-container form {
   max-width: 100%;
   display: flex;
@@ -12345,6 +12334,75 @@ footer .row .col a:focus {
 }
 .projects-list-container table tbody tr:hover, .projects-list-container table tbody tr:active, .projects-list-container table tbody tr:focus {
   cursor: pointer;
+}
+.notifications-container {
+  width: 100%;
+  min-height: 10em;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  outline: rgba(0, 0, 0, 0.25) solid 1px;
+}
+
+.notification-container .alert {
+  position: relative;
+  padding: 0.5em;
+  border: transparent solid 2px;
+}
+.notification-container .alert .btn-close {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  left: unset;
+  bottom: unset;
+  width: 0.75em;
+  height: 0.75em;
+  padding: 0;
+  margin: 0;
+  border-radius: unset;
+}
+.notification-container .alert .alert-heading {
+  font-size: 1.25em;
+  font-weight: 600;
+}
+.notification-container .alert.alert-primary {
+  background: #000;
+  color: #5fdbf8;
+  border-color: #5fdbf8;
+}
+.notification-container .alert.alert-secondary {
+  background: #575757;
+  color: #5fdbf8;
+  border-color: #5fdbf8;
+}
+.notification-container .alert.alert-success {
+  background: transparent;
+  color: #000;
+  border-color: rgb(7, 201, 0);
+}
+.notification-container .alert.alert-danger {
+  background: transparent;
+  color: #000;
+  border-color: rgb(255, 90, 90);
+}
+.notification-container .alert.alert-warning {
+  background: transparent;
+  color: #000;
+  border-color: rgb(255, 251, 26);
+}
+.notification-container .alert.alert-info {
+  background: transparent;
+  color: #000;
+  border-color: #575757;
+}
+.notification-container .alert.alert-light {
+  background: #FFF;
+  color: #000;
+  border-color: #000;
+}
+.notification-container .alert.alert-dark {
+  background: #000;
+  color: #FFF;
+  border-color: #000;
 }
 
 /*# sourceMappingURL=App.css.map */

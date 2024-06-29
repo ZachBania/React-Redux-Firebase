@@ -11,6 +11,9 @@ const projectSlice = createSlice({
   initialState,
 
   reducers: {
+    getProject: (state, action) => {
+      state.project = action.payload;
+    }, 
     getProjects: (state, action) => {
       state.projects = action.payload;
     }, 

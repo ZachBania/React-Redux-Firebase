@@ -8,7 +8,10 @@ import StaticHeader from '../parts/StaticHeader';
 import { Row, Col } from "react-bootstrap";
 
 
-export default function ProjectDetail() {
+export default function ProjectDetail({ project }) {
+
+   
+
     return (
         <>
             <Row>
@@ -19,7 +22,7 @@ export default function ProjectDetail() {
             <Row className='row project-detail-container'>
                 <Col className={'col'} sm="12" md="12" lg="12" xl="12" xxl="12">
 
-                    <p className="project-name">Project Header: </p>
+                    <p className="project-name">Project Header </p>
 
                     <p className="id">id: </p>
                     <p className="header">header: </p>
