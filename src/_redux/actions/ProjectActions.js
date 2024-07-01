@@ -1,44 +1,60 @@
-import { getProjects, createProject, projectError } from './../reducers/projectSlice';
+import { getProject, getProjects, createProject, updateProject, projectError } from './../reducers/projectSlice';
 import { db } from '../../_api/firebase';
 
-export const getProject = (projectId) => async (dispatch) => {
+export const getProjectAsync = (projectId) => async (dispatch) => {
     try {
-        const docRef = db.collection('Projects').doc(projectId);
-        const doc = await docRef.get();
-        if (doc.exists) {
-            dispatch(getProject({ id: doc.id, ...doc.data() }));
+        const idAsInt = parseInt(projectId);
+        const querySnapshot = await db.collection('Projects').where('id', '==', idAsInt).get();
+        if (!querySnapshot.empty) {
+            querySnapshot.forEach(doc => {
+                dispatch(getProject({ id: doc.id, ...doc.data() }));
+            });
+        } else {
+            console.log('No such document!');
         }
+    } catch (error) {
+        console.error('Error fetching project:', error);
+        dispatch(projectError(error));
+    }
+};
+
+export const getProjectsAsync = () => async (dispatch) => {
+    try {
+        const snapshot = await db.collection('Projects').orderBy('id', 'desc').get();
+        let projects = [];
+        snapshot.forEach(doc => {
+            projects.push({ id: doc.id, ...doc.data() });
+        });
+        dispatch(getProjects(projects));
     } catch (error) {
         dispatch(projectError(error));
     }
 };
 
-export const getProjectsAsync = () => {
-    return async (dispatch) => {
-        try {
-            const snapshot = await db.collection('Projects').orderBy('id', 'desc').get();
-            let projects = [];
-            snapshot.forEach(doc => {
-                projects.push({ id: doc.id, ...doc.data() });
-            });
-            dispatch(getProjects(projects));
-        } catch (error) {
-            dispatch(projectError(error));
-        }
-    };
+export const createProjectAsync = (project) => async (dispatch) => {
+    try {
+        const projectWithIdAsInt = { ...project, id: parseInt(project.id) };
+        const docRef = await db.collection('Projects').add(projectWithIdAsInt);
+        dispatch(createProject(projectWithIdAsInt));
+    } catch (error) {
+        dispatch(projectError(error));
+    }
 };
 
 
-export const createProjectAsync = (project) => {
-    return async (dispatch) => {
-        try {
-            // Add project to firestore database
-            const docRef = await db.collection('Projects').add(project);
-
-            // Update Redux state after successful addition
-            dispatch(createProject({ ...project, id: project.id }));
-        } catch (error) {
-            dispatch(projectError(error));
+export const updateProjectAsync = (project) => async (dispatch) => {
+    try {
+        const projectId = project.id;
+        const projectRef = await db.collection('Projects').where('id', '==', projectId).get();
+        if (!projectRef.empty) {
+            projectRef.forEach(async (doc) => {
+                await doc.ref.update(project);
+                dispatch(updateProject(project));
+            });
+        } else {
+            console.log('No such document!');
         }
-    };
+    } catch (error) {
+        dispatch(projectError(error));
+    }
 };

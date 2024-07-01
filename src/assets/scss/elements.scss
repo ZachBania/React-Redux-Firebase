@@ -94,7 +94,7 @@ table {
     }
 }
 
-// .alert-container {
+.alert-container {
 //     position: absolute;
 //     top: .5em;
 //     left: 50%;
@@ -158,9 +158,7 @@ table {
 //             padding: 0;
 //         }
 //     }
-// }
-
-
+}
 
 .hstack {
 
@@ -206,7 +204,12 @@ table {
                 border: unset;
                 border-radius: .25em;
                 box-shadow: unset;
+                transition: .25s;
                 outline: $color_outline solid 1px;
+
+                &[aria-expanded="true"] {
+                    background: $color_primary;
+                }
             }
         }
 

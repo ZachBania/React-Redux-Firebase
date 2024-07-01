@@ -1,39 +1,49 @@
 // Core Imports
-import React from 'react'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 // Component Imports
 import StaticHeader from '../parts/StaticHeader';
+import { getProjectAsync } from '../../_redux/actions/ProjectActions'; // Imported the correct action
+import PageNotFound from '../navigation/PageNotFound';
+
 
 // Bootstrap Imports
 import { Row, Col } from "react-bootstrap";
 
+export default function ProjectDetail() {
+    const dispatch = useDispatch();
+    const { id } = useParams();
+    const project = useSelector(state => state.project.project);
 
-export default function ProjectDetail({ project }) {
-
-   
+    useEffect(() => {
+        dispatch(getProjectAsync(id)); 
+    }, [dispatch, id]);
 
     return (
         <>
-            <Row>
-                <Col className={'col'} sm="12" md="12" lg="12" xl="12" xxl="12">
-                    <StaticHeader headerText={"Project Detail"} />
-                </Col>
-            </Row>
-            <Row className='row project-detail-container'>
-                <Col className={'col'} sm="12" md="12" lg="12" xl="12" xxl="12">
+            {project ? (
+                <>
+                    <Row>
+                        <Col className={'col'} sm="12" md="12" lg="12" xl="12" xxl="12">
+                            <StaticHeader headerText={project.header ? project.header : ''} />
+                        </Col>
+                    </Row>
+                    <Row className='row project-detail-container'>
+                        <Col className={'col'} sm="12" md="12" lg="8" xl="8" xxl="8">
+                            <>
+                                {project.description && project.description.map(desc => (
+                                    <p className='description'>{desc}</p>
+                                ))}
 
-                    <p className="project-name">Project Header </p>
-
-                    <p className="id">id: </p>
-                    <p className="header">header: </p>
-                    <p className="description">description: </p>
-                    <p className="excerpt">excerpt: </p>
-                    <p className="category_owner">category_owner: </p>
-                    <p className="meta">meta: </p>
-
-                </Col>
-            </Row>
+                            </>
+                        </Col>
+                        <Col className={'col'} sm="12" md="12" lg="4" xl="4" xxl="4">
+                        </Col>
+                    </Row>
+                </>
+            ) : (<PageNotFound />)}
         </>
-    )
+    );
 }
-

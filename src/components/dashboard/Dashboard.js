@@ -1,58 +1,68 @@
 import React, { useEffect } from "react";
 import { getProjectsAsync } from '../../_redux/actions/ProjectActions';
-import { getNotificationsAsync } from '../../_redux/actions/NotificationActions';
+import { getNotificationsAsync, getNotificationsByAuthorAsync } from '../../_redux/actions/NotificationActions';
 import { useDispatch, useSelector } from "react-redux";
+import { isAuthenticated, selectUserEmail, selectUserName } from "../../_redux/reducers/userSlice";
 
 // Component Imports
 import StaticHeader from "../parts/StaticHeader";
 import CreateProject from "../projects/CreateProject";
 import ProjectList from "../projects/ProjectList";
 import Notifications from "../parts/Notifications";
+import NotAuthorized from "../navigation/NotAuthorized";
 
 // Bootstrap Imports
-import { Row, Col, Accordion } from "react-bootstrap";
-
+import { Row, Col, Accordion, Tabs, Tab } from "react-bootstrap";
 
 const Dashboard = () => {
     const dispatch = useDispatch();
     const projects = useSelector(state => state.project.projects);
-    const notifications = useSelector(state => state.notification.notifications);
+    const isAuth = useSelector(isAuthenticated);
+    const userEmail = useSelector(selectUserEmail);
 
     useEffect(() => {
         dispatch(getProjectsAsync());
-        dispatch(getNotificationsAsync());
-    }, [dispatch]);
-
-    console.log(notifications);
+    }, [dispatch, userEmail]);
 
     return (
         <>
-            <Row>
-                <Col className={'col'} sm="12" md="12" lg="12" xl="12" xxl="12">
-                    <StaticHeader headerText={"Dashboard"} />
-                </Col>
-            </Row>
+            {isAuth ? (
+                <>
+                    <Row>
+                        <Col className={'col'} sm="12" md="12" lg="12" xl="12" xxl="12">
+                            <StaticHeader headerText={"Dashboard"} />
+                        </Col>
+                    </Row>
 
-            <Row className='row dashboard-container'>
-                <Col className={'col'} sm="12" md="12" lg="8" xl="8" xxl="8">
-                    <Accordion>
-                        <Accordion.Item eventKey="0">
-                            <Accordion.Header>Create Project</Accordion.Header>
-                            <Accordion.Body>
-                                <CreateProject />
-                            </Accordion.Body>
-                        </Accordion.Item>
-                    </Accordion>
+                    <Row className='row dashboard-container'>
+                        <Col className={'col'} sm="12" md="8" lg="8" xl="8" xxl="8">
 
-                    <h3>Project List</h3>
-                    <ProjectList projects={projects} />
+                            <Tabs defaultActiveKey="projects" id="uncontrolled-tab-example">
+                                <Tab eventKey="home" title="Home">
+                                    Tab content for Home
+                                </Tab>
+                                <Tab eventKey="projects" title="Projects">
+                                    <Accordion>
+                                        <Accordion.Item eventKey="0">
+                                            <Accordion.Header>Create Project</Accordion.Header>
+                                            <Accordion.Body>
+                                                <CreateProject />
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+                                    </Accordion>
 
-                </Col>
-                <Col className={'col'} sm="12" md="12" lg="4" xl="4" xxl="4">
-                    <h3>Notifications</h3>
-                    <Notifications notifications={notifications} />
-                </Col>
-            </Row>
+                                    <h3>Project List</h3>
+                                    {projects && <ProjectList projects={projects} />}
+                                </Tab>
+
+                            </Tabs>
+                        </Col>
+                        <Col className={'col'} sm="12" md="4" lg="4" xl="4" xxl="4">
+                        
+                        </Col>
+                    </Row>
+                </>
+            ) : (<NotAuthorized />)}
         </>
     );
 }

@@ -9,7 +9,7 @@ import StaticHeader from '../parts/StaticHeader';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-function NotAuthorized() {
+export default function NotAuthorized() {
 
     return (
     <>
@@ -30,5 +30,3 @@ function NotAuthorized() {
     </>
     );
 }
-
-export default NotAuthorized;

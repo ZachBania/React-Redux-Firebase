@@ -12,7 +12,7 @@ const ProjectList = ({ projects }) => {
         <div className="project-list-container">
 
             <Table>
-                <thead>
+                <thead> 
                     <tr>
                         <th><p>#</p></th>
                         <th><p>Header</p></th>

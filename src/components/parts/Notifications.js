@@ -1,19 +1,24 @@
 // Core Imports
 import React from 'react';
+import { selectUserEmail, selectUserName } from '../../_redux/reducers/userSlice';
+import { useSelector } from 'react-redux';
 
 // Component Imports
 import Notification from "./Notification";
 
-// Bootstrap Imports
-import Alert from 'react-bootstrap/Alert';
-
 export default function Notifications({ notifications }) {
+    const userName = useSelector(selectUserName);
+    const userEmail = useSelector(selectUserEmail);
     return (
         <>
             <div className='notifications-container'>
-                {notifications && notifications.map(notification => (
-                    <Notification notification={notification} key={notification.id} />
-                ))}
+                {notifications.length > 0 ? (
+                    notifications.map(notification => (
+                        <Notification notification={notification} key={notification.id} />
+                    ))
+                ) : (  
+                    <p className="no-notifications">No notifications found</p>
+                )}
             </div>
         </>
     )

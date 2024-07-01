@@ -57,7 +57,7 @@ p {
   padding: .25em 1em;
   cursor: pointer;
 
-  &:hover, &:active, &:focus {
+  &:hover, &:active {
     background: $color_primary;
     border: $color_primary solid 1px;
     color:$color_primary_dark;

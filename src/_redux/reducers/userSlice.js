@@ -25,6 +25,7 @@ const userSlice = createSlice({
 
 export const selectUserName = state => state.user.userName
 export const selectUserEmail = state => state.user.userEmail
+export const isAuthenticated = state => state.user.userName !== null
 
 export const {setActiveUser, setUserLogOutState} = userSlice.actions
 export default userSlice.reducer

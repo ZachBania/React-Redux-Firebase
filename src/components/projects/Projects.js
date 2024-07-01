@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectsAsync } from "../../_redux/actions/ProjectActions";
 
-//Component Import
+// Component Imports
 import StaticHeader from "../parts/StaticHeader";
 import Project from "./Project";
 
@@ -11,9 +11,8 @@ import Project from "./Project";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-
 export default function Projects() {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const projects = useSelector(state => state.project.projects);
 
     useEffect(() => {
@@ -28,7 +27,7 @@ export default function Projects() {
                 </Col>
             </Row>
 
-            <Row className='row project-container'>
+            <Row className='row projects-container'>
                 <Col className={'col'} sm="12" md="12" lg="8" xl="8" xxl="8">
                     {projects && projects.map(project => (
                         <Project project={project} key={project.id} />
@@ -38,5 +37,5 @@ export default function Projects() {
                 </Col>
             </Row>
         </>
-    )
+    );
 }
