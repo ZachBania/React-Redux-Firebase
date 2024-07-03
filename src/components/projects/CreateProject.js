@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 // Component Imports
 import { createProjectAsync } from "../../_redux/actions/ProjectActions";
-import { createNotification, getNotificationsAsync } from "../../_redux/actions/NotificationActions";
+import { createNotification, getNotificationsByAuthorAsync } from "../../_redux/actions/NotificationActions";
 
 // Bootstrap Imports
 import { Link } from "react-router-dom";
@@ -57,7 +57,7 @@ const CreateProject = () => {
             formData.header + " was created.",
             userEmail
         ));
-        dispatch(getNotificationsAsync());
+        dispatch(getNotificationsByAuthorAsync(userEmail));
         setFormData(initialFormData);
     }
 

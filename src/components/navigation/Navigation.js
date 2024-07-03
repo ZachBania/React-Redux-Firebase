@@ -25,6 +25,8 @@ const Navigation = () => {
     const userEmail = useSelector(selectUserEmail);
     const isAuth = useSelector(isAuthenticated);
     const notifications = useSelector(state => state.notification.notifications);
+    const notificationsByAuthor = useSelector(state => state.notification.notificationsByAuthor);
+    const [showNotificationsTemporarily, setShowNotificationsTemporarily] = useState(false);
 
     const handleLogin = () => {
         auth.signInWithPopup(provider).then((res) => {
@@ -50,6 +52,17 @@ const Navigation = () => {
             dispatch(getNotificationsByAuthorAsync(userEmail));
         }
     }, [dispatch, userEmail]);
+
+
+    useEffect(() => {
+        if (notificationsByAuthor.length > 0) {
+            setShowNotificationsTemporarily(true);
+            const timer = setTimeout(() => {
+                setShowNotificationsTemporarily(false);
+            },4000); // Hide after 2 seconds
+            return () => clearTimeout(timer); // Cleanup the timer
+        }
+    }, [notificationsByAuthor]);
 
     return (
         <>
@@ -88,8 +101,8 @@ const Navigation = () => {
                     </Nav>
                 </div>
                 <div className='nav-notification-container'>
-                    {showNotifications && notifications && userEmail ? (
-                        <Notifications notifications={notifications} />
+                    {(showNotifications && notifications && userEmail) || showNotificationsTemporarily ? (
+                        <Notifications notifications={notificationsByAuthor} />
                     ) : ('')}
                 </div>
             </Navbar>

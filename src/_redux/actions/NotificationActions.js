@@ -1,4 +1,4 @@
-import { getNotifications, notificationError } from '../reducers/notificationSlice';
+import { getNotifications, getNotificationsByAuthor, notificationError } from '../reducers/notificationSlice';
 import { db } from '../../_api/firebase';
  
 export const getNotificationsAsync = () => {
@@ -15,6 +15,22 @@ export const getNotificationsAsync = () => {
         }
     };
 };
+
+export const getNotificationsByAuthorAsync = (author) => {
+    return async (dispatch) => {
+        try {
+            const snapshot = await db.collection('Notifications').where('author', '==', author).get();
+            let notifications = [];
+            snapshot.forEach(doc => {
+                notifications.push({ id: doc.id, ...doc.data() });
+            });
+            dispatch(getNotificationsByAuthor(notifications));
+        } catch (error) {
+            dispatch(notificationError(error));
+        }
+    };
+};
+
 export const createNotification = (type, header, body, author) => {
     return async (dispatch) => {
         try {
@@ -26,17 +42,3 @@ export const createNotification = (type, header, body, author) => {
     };
 };
 
-export const getNotificationsByAuthorAsync = (author) => {
-    return async (dispatch) => {
-        try {
-            const snapshot = await db.collection('Notifications').where('author', '==', author).get();
-            let notifications = [];
-            snapshot.forEach(doc => {
-                notifications.push({ id: doc.id, ...doc.data() });
-            });
-            dispatch(getNotifications(notifications));
-        } catch (error) {
-            dispatch(notificationError(error));
-        }
-    };
-};

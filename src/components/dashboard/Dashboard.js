@@ -41,6 +41,10 @@ const Dashboard = () => {
                                 <Tab eventKey="home" title="Home">
                                     Tab content for Home
                                 </Tab>
+                                <Tab eventKey="profile" title="Profile">
+                                
+                                    
+                                </Tab>                                
                                 <Tab eventKey="projects" title="Projects">
                                     <Accordion>
                                         <Accordion.Item eventKey="0">
@@ -51,7 +55,7 @@ const Dashboard = () => {
                                         </Accordion.Item>
                                     </Accordion>
 
-                                    <h3>Project List</h3>
+                                    <h3>Project List</h3> 
                                     {projects && <ProjectList projects={projects} />}
                                 </Tab>
 
