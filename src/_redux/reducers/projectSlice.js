@@ -26,7 +26,7 @@ const projectSlice = createSlice({
       }
     },
     deleteProject: (state, action) => {
-      // To be implemented
+      state.projects = state.projects.filter(project => project.id !== action.payload);
     },
     projectError: (state, action) => {
       console.log(action.payload);
@@ -34,5 +34,5 @@ const projectSlice = createSlice({
   }
 });
 
-export const { getProject, getProjects, createProject, updateProject, projectError } = projectSlice.actions;
+export const { getProject, getProjects, createProject, updateProject, deleteProject, projectError } = projectSlice.actions;
 export default projectSlice.reducer;

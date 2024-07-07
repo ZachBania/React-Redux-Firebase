@@ -371,31 +371,6 @@ footer {
   }
 }
 
-.projects-list-container {
-  padding: 0 0 1em 0;
-
-  table {
-    thead {
-      tr {
-        th {
-        }
-      }
-    }
-    tbody {
-      tr {
-        &:hover,
-        &:active,
-        &:focus {
-          // outline: $color_primary solid 5px !important;
-          cursor: pointer;
-        }
-        td {
-        }
-      }
-    }
-  }
-}
-
 .project-detail-container {
   .col {
     padding: 0.5em;
@@ -408,6 +383,11 @@ footer {
       margin: 0 0 1em 0;
     }
   }
+}
+
+.profile-container {
+  
+  margin: 0 0 1em 0;
 }
 
 .notifications-container {
@@ -491,6 +471,12 @@ footer {
       }
 
       .alert-body {
+      }
+
+      .alert-timestamp {
+        font-size: .75em;
+        line-height: 1em;
+        margin: 1em 0 0 0;
       }
 
       $default-alert-background: #efefef;

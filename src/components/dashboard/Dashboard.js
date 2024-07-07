@@ -8,8 +8,14 @@ import { isAuthenticated, selectUserEmail, selectUserName } from "../../_redux/r
 import StaticHeader from "../parts/StaticHeader";
 import CreateProject from "../projects/CreateProject";
 import ProjectList from "../projects/ProjectList";
+import UserList from "../users/UserList";
+import Profile from "../users/Profile";
+
 import Notifications from "../parts/Notifications";
 import NotAuthorized from "../navigation/NotAuthorized";
+
+import { getUsersAsync } from "../../_redux/actions/UserActions";
+import { selectActiveUser } from "../../_redux/reducers/userSlice";
 
 // Bootstrap Imports
 import { Row, Col, Accordion, Tabs, Tab } from "react-bootstrap";
@@ -17,11 +23,15 @@ import { Row, Col, Accordion, Tabs, Tab } from "react-bootstrap";
 const Dashboard = () => {
     const dispatch = useDispatch();
     const projects = useSelector(state => state.project.projects);
+
+    const activeUser = useSelector(selectActiveUser);
+    const users = useSelector(state => state.user.users);
     const isAuth = useSelector(isAuthenticated);
     const userEmail = useSelector(selectUserEmail);
 
     useEffect(() => {
         dispatch(getProjectsAsync());
+        dispatch(getUsersAsync());
     }, [dispatch, userEmail]);
 
     return (
@@ -37,14 +47,18 @@ const Dashboard = () => {
                     <Row className='row dashboard-container'>
                         <Col className={'col'} sm="12" md="8" lg="8" xl="8" xxl="8">
 
-                            <Tabs defaultActiveKey="projects" id="uncontrolled-tab-example">
+                            <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
                                 <Tab eventKey="home" title="Home">
                                     Tab content for Home
                                 </Tab>
                                 <Tab eventKey="profile" title="Profile">
-                                
-                                    
-                                </Tab>                                
+                                    <h3>Profile</h3>
+                                    { activeUser && <Profile user={activeUser} /> }
+
+                                    <h3>All Users</h3>
+                                    {users && <UserList users={users} />}
+
+                                </Tab>
                                 <Tab eventKey="projects" title="Projects">
                                     <Accordion>
                                         <Accordion.Item eventKey="0">
@@ -55,14 +69,14 @@ const Dashboard = () => {
                                         </Accordion.Item>
                                     </Accordion>
 
-                                    <h3>Project List</h3> 
+                                    <h3>Project List</h3>
                                     {projects && <ProjectList projects={projects} />}
                                 </Tab>
-
                             </Tabs>
                         </Col>
                         <Col className={'col'} sm="12" md="4" lg="4" xl="4" xxl="4">
-                        
+                            <p>Active User:</p>
+                            <pre>{JSON.stringify(activeUser, null, 1)}</pre>
                         </Col>
                     </Row>
                 </>

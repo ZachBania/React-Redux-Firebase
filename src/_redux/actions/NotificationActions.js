@@ -1,6 +1,7 @@
-import { getNotifications, getNotificationsByAuthor, notificationError } from '../reducers/notificationSlice';
 import { db } from '../../_api/firebase';
- 
+import { getNotifications, getNotificationsByAuthor, notificationError } from '../reducers/notificationSlice';
+import { format } from 'date-fns'; 
+
 export const getNotificationsAsync = () => {
     return async (dispatch) => {
         try {
@@ -34,11 +35,22 @@ export const getNotificationsByAuthorAsync = (author) => {
 export const createNotification = (type, header, body, author) => {
     return async (dispatch) => {
         try {
-            await db.collection('Notifications').add({ type, header, body, author });
-            dispatch(getNotificationsAsync()); // Refresh notifications after adding a new one
+            await db.collection('Notifications').add({ 
+                type: type, 
+                header: header, 
+                body: body, 
+                author: author, 
+                timestamp:new Date().toString()
+            });
+            dispatch(getNotificationsAsync()); 
         } catch (error) {
             dispatch(notificationError(error));
         }
     };
 };
 
+export const formatNotificationTimestamp = (timestamp) => {
+    const date = new Date(timestamp);
+    const formatedDate = format(date, 'M-d-y, h:mm a');
+    return formatedDate;
+};

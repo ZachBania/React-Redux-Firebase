@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { selectUserEmail } from "../../_redux/reducers/userSlice";
 
 // Component Imports
-import { getProjectAsync, updateProjectAsync } from "../../_redux/actions/ProjectActions";
+import { getProjectAsync, updateProjectAsync, deleteProjectAsync } from "../../_redux/actions/ProjectActions";
 import StaticHeader from "../parts/StaticHeader";
 import { createNotification } from "../../_redux/actions/NotificationActions";
 
@@ -72,6 +72,16 @@ const ManageProject = () => {
       navigate('/dashboard');
     });
   };
+
+  const handleDelete = () => {
+    dispatch(deleteProjectAsync(formData.id))
+        .then(() => {
+            navigate('/dashboard');
+        })
+        .catch((error) => {
+            console.error("Failed to delete the project", error);
+        });
+};
 
   return (
     <>
@@ -151,6 +161,7 @@ const ManageProject = () => {
                 <div className="submit-container">
                   <Link to="/dashboard" className="btn">Cancel</Link>
                   <Button type="submit" className="btn">Update Project</Button>
+                  <Button variant="danger" onClick={handleDelete} className="btn">Delete</Button>
                 </div>
               </Form>
             </Col>

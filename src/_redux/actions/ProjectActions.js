@@ -1,4 +1,5 @@
-import { getProject, getProjects, createProject, updateProject, projectError } from './../reducers/projectSlice';
+import { getProject, getProjects, createProject, updateProject, deleteProject, projectError } from './../reducers/projectSlice';
+import { createNotification } from './NotificationActions';
 import { db } from '../../_api/firebase';
 
 export const getProjectAsync = (projectId) => async (dispatch) => {
@@ -50,6 +51,33 @@ export const updateProjectAsync = (project) => async (dispatch) => {
             projectRef.forEach(async (doc) => {
                 await doc.ref.update(project);
                 dispatch(updateProject(project));
+            });
+        } else {
+            console.log('No such document!');
+        }
+    } catch (error) {
+        dispatch(projectError(error));
+    }
+};
+
+
+export const deleteProjectAsync = (projectId) => async (dispatch, getState) => {
+    const state = getState();
+    const userEmail = state.user.email;
+    try {
+        const projectRef = await db.collection('Projects').where('id', '==', projectId).get();
+        if (!projectRef.empty) {
+            projectRef.forEach(async (doc) => {
+                await doc.ref.delete();
+                dispatch(deleteProject(projectId)); 
+
+                // Dispatch the notification action here
+                dispatch(createNotification(
+                    'success', 
+                    'Project Deleted',
+                    `${projectId} has been successfully deleted.`,
+                    userEmail
+                ));
             });
         } else {
             console.log('No such document!');

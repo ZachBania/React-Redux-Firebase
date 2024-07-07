@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { auth, provider } from "./../../_api/firebase";
 import { useDispatch, useSelector } from 'react-redux';
-import { setActiveUser, setUserLogOutState, selectUserEmail, selectUserName } from "./../../_redux/reducers/userSlice";
+import { setActiveUser, selectUserEmail, selectUserName } from "./../../_redux/reducers/userSlice";
 
 // Component Imports
 import { isAuthenticated } from './../../_redux/reducers/userSlice';
@@ -14,38 +14,21 @@ import Notifications from "../parts/Notifications";
 // Bootstrap Imports
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-
+import { setLogin, setLogout } from '../../_redux/actions/UserActions';
 
 
 const Navigation = () => {
     const [error, setError] = useState("");
     const [showNotifications, setShowNotifications] = useState(false);
     const dispatch = useDispatch();
+
+    const isAuth = useSelector(isAuthenticated);
     const userName = useSelector(selectUserName);
     const userEmail = useSelector(selectUserEmail);
-    const isAuth = useSelector(isAuthenticated);
+
     const notifications = useSelector(state => state.notification.notifications);
     const notificationsByAuthor = useSelector(state => state.notification.notificationsByAuthor);
     const [showNotificationsTemporarily, setShowNotificationsTemporarily] = useState(false);
-
-    const handleLogin = () => {
-        auth.signInWithPopup(provider).then((res) => {
-            dispatch(setActiveUser({
-                userName: res.user.displayName,
-                userEmail: res.user.email
-            }));
-        }).catch((err) => {
-            console.log(err.message);
-        });
-    }
-
-    const handleLogOut = () => {
-        auth.signOut().then(() => {
-            dispatch(setUserLogOutState());
-        }).catch((err) => {
-            console.log(err.message);
-        });
-    }
 
     useEffect(() => {
         if (userEmail) {
@@ -59,8 +42,8 @@ const Navigation = () => {
             setShowNotificationsTemporarily(true);
             const timer = setTimeout(() => {
                 setShowNotificationsTemporarily(false);
-            },4000); // Hide after 2 seconds
-            return () => clearTimeout(timer); // Cleanup the timer
+            }, 4000);
+            return () => clearTimeout(timer);
         }
     }, [notificationsByAuthor]);
 
@@ -92,10 +75,10 @@ const Navigation = () => {
                                             {showNotifications ? ('Notifications') : ('Notifications')}
                                         </Link>
                                     </li>
-                                    <li><Link to="/" onClick={handleLogOut}>Logout</Link></li>
+                                    <li><Link to="/" onClick={() => dispatch(setLogout())}>Logout</Link></li>
                                 </>
                             ) : (
-                                <li><Link to="/" onClick={handleLogin}>Login</Link></li>
+                                <li><Link to="/" onClick={() => dispatch(setLogin())}>Login</Link></li>
                             )}
                         </ul>
                     </Nav>

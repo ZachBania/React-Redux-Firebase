@@ -12006,26 +12006,37 @@ form .submit-container {
   padding: 1em 0;
 }
 
-table thead tr {
+table thead tr, .table thead tr {
   border-color: transparent;
 }
-table thead tr th {
+table thead tr th, .table thead tr th {
   font-weight: 800;
   background: transparent !important;
   outline: #000 solid 1px;
   min-width: 100px;
 }
-table tbody tr {
+table tbody, .table tbody {
+  background: transparent;
+}
+table tbody tr, .table tbody tr {
+  background: transparent !important;
   border-color: transparent;
   transition: 0.25s;
   min-width: 100px;
 }
-table tbody tr:hover, table tbody tr:active {
+table tbody tr:hover, table tbody tr:active, .table tbody tr:hover, .table tbody tr:active {
   background: rgba(0, 0, 0, 0.05) !important;
+  curosor: pointer;
 }
-table tbody tr td {
+table tbody tr td, .table tbody tr td {
   background: transparent !important;
   outline: #000 solid 1px;
+}
+table tbody tr td:hover, table tbody tr td:active, .table tbody tr td:hover, .table tbody tr td:active {
+  curosor: pointer;
+}
+table tbody tr td p, .table tbody tr td p {
+  background-color: transparent !important;
 }
 
 .hstack .badge {
@@ -12402,12 +12413,6 @@ footer .row .col a:focus {
   flex: 1 1 100%;
 }
 
-.projects-list-container {
-  padding: 0 0 1em 0;
-}
-.projects-list-container table tbody tr:hover, .projects-list-container table tbody tr:active, .projects-list-container table tbody tr:focus {
-  cursor: pointer;
-}
 .project-detail-container .col {
   padding: 0.5em;
 }
@@ -12417,6 +12422,10 @@ footer .row .col a:focus {
   }
 }
 .project-detail-container .col .description {
+  margin: 0 0 1em 0;
+}
+
+.profile-container {
   margin: 0 0 1em 0;
 }
 
@@ -12491,6 +12500,11 @@ footer .row .col a:focus {
   font-weight: 600;
   margin: 0;
   padding: 0;
+}
+.notifications-container .notification-container .alert .alert-timestamp {
+  font-size: 0.75em;
+  line-height: 1em;
+  margin: 1em 0 0 0;
 }
 .notifications-container .notification-container .alert.alert-primary {
   background: #000;
