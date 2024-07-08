@@ -54,6 +54,9 @@ form {
         &:target {
             box-shadow: 0 0 0 0.25rem $color_primary;
         }
+        &:read-only  {
+            background: rgba(0,0,0, .05);
+        }
     }
 
     .submit-container {
@@ -162,5 +165,23 @@ table, .table {
 
         }
         
+    }
+}
+
+.list-group {
+    
+    margin: 0 0 1em 0;
+
+    .list-group-item {
+        padding: .5em .5em;
+        
+
+        &:hover {
+            
+        }
+
+        &.active {
+            
+        }
     }
 }

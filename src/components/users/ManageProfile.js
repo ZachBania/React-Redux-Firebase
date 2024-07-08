@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { selectActiveUser } from "../../_redux/reducers/UserSlice";
+
 // Component Imports
 import StaticHeader from "../parts/StaticHeader";
 import { getUserAsync, updateUserAsync } from "../../_redux/actions/UserActions";
@@ -15,7 +17,7 @@ import { Row, Col, Form, Button } from "react-bootstrap";
 const ManageProfile = () => {
   const navigate = useNavigate(null);
   const { id } = useParams();
-  const user = useSelector(state => state.user.user);
+  const activeUser = useSelector(selectActiveUser);
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
@@ -27,20 +29,17 @@ const ManageProfile = () => {
   });
 
   useEffect(() => {
-    if (user) {
+    if (activeUser) {
       setFormData({
-        id: user.id,
-        email: user.email,
-        user_name: user.user_name,
-        display_name: user.display_name,
-        summary: user.summary,
+        id: activeUser.id,
+        email: activeUser.email,
+        user_name: activeUser.user_name,
+        display_name: activeUser.display_name,
+        summary: activeUser.summary,
       });
     }
-  }, [user]);
+  }, [activeUser]);
 
-  useEffect(() => {
-    dispatch(getUserAsync(id));
-  }, [dispatch, id]);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -50,19 +49,19 @@ const ManageProfile = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(updateUserAsync(formData));
-    //   dispatch(createNotification(
-    //     'success',
-    //     'New Project Created',
-    //     formData.header + " was updated.",
-    //     userEmail
-    // )).then(() => {
-    //     navigate('/dashboard');
-    //   });
+    dispatch(createNotification(
+      'success',
+      'Profile Updated',
+      "Your profile has been updated.",
+      activeUser.email
+    )).then(() => {
+      navigate('/dashboard');
+    });
   };
 
   return (
     <>
-      {user ? (
+      {activeUser ? (
         <>
           <Row>
             <Col className={'col'} sm="12" md="12" lg="12" xl="12" xxl="12">

@@ -1,10 +1,10 @@
 // Core Imports
 import React from 'react';
-import { selectUserEmail, selectUserName } from '../../_redux/reducers/userSlice';
+import { selectUserEmail, selectUserName } from '../../_redux/reducers/UserSlice';
 import { useSelector } from 'react-redux';
 
 // Component Imports
-import Notification from "./Notification";
+import Notification from './Notification';
 
 export default function Notifications({ notifications }) {
     const userName = useSelector(selectUserName);
@@ -17,7 +17,7 @@ export default function Notifications({ notifications }) {
                         <Notification notification={notification} key={notification.id} />
                     ))
                 ) : (  
-                    <p className="no-notifications">No notifications found</p>
+                    <p className="no-notifications">No activity yet.</p>
                 )}
             </div>
         </>

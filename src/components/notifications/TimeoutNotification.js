@@ -6,7 +6,7 @@ import {formatNotificationTimestamp} from '../../_redux/actions/NotificationActi
 // Bootstrap Imports
 import Alert from 'react-bootstrap/Alert';
 
-export default function Notification( {notification}) {
+export default function TimeoutNotification( {notification}) {
   const bsAlertTypes = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'];
 
   return (

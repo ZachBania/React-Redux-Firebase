@@ -1,8 +1,8 @@
 // Store.js
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer, { setActiveUser, setStateLogout } from "./reducers/userSlice";
-import projectReducer from "./reducers/projectSlice";
-import notificationReducer from "./reducers/notificationSlice";
+import userReducer, { setActiveUser, setStateLogout } from "./reducers/UserSlice";
+import projectReducer from "./reducers/ProjectSlice";
+import notificationReducer from "./reducers/NotificationSlice";
 import { auth, db } from '../_api/firebase';
 
 import { persistStore, persistReducer } from 'redux-persist';

@@ -1,7 +1,7 @@
 // Core Imports
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { isAuthenticated, selectUserEmail, selectUserName } from "../../_redux/reducers/userSlice";
+import { isAuthenticated, selectUserEmail, selectUserName } from "../../_redux/reducers/UserSlice";
 import { useSelector } from "react-redux";
 
 // Component Imports

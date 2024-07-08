@@ -1,4 +1,4 @@
-import { getProject, getProjects, createProject, updateProject, deleteProject, projectError } from './../reducers/projectSlice';
+import { getProject, getProjects, createProject, updateProject, deleteProject, projectError } from '../reducers/ProjectSlice';
 import { createNotification } from './NotificationActions';
 import { db } from '../../_api/firebase';
 

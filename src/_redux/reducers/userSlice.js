@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { persistor } from '../store';
 
 const initialState = { 
   users: [], 
@@ -23,6 +24,7 @@ const userSlice = createSlice({
       state.activeUser.summary = action.payload.summary;
     },
     setStateLogout: state => {
+      
       state.activeUser.id = null;
       state.activeUser.user_name = null;
       state.activeUser.email = null;

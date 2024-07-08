@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { selectUserEmail } from "../../_redux/reducers/userSlice";
+import { selectUserEmail } from "../../_redux/reducers/UserSlice";
 
 // Component Imports
 import { getProjectAsync, updateProjectAsync, deleteProjectAsync } from "../../_redux/actions/ProjectActions";
@@ -65,23 +65,25 @@ const ManageProject = () => {
     dispatch(updateProjectAsync(formData));
     dispatch(createNotification(
       'success',
-      'New Project Created',
+      'Project Updated',
       formData.header + " was updated.",
       userEmail
-  )).then(() => {
+    )).then(() => {
       navigate('/dashboard');
     });
   };
 
   const handleDelete = () => {
-    dispatch(deleteProjectAsync(formData.id))
-        .then(() => {
-            navigate('/dashboard');
-        })
-        .catch((error) => {
-            console.error("Failed to delete the project", error);
-        });
-};
+    dispatch(deleteProjectAsync(formData.id));
+    dispatch(createNotification(
+      'danger',
+      'Project Deleted',
+      formData.header + " was deleted.",
+      userEmail
+    )).then(() => {
+      navigate('/dashboard');
+    });
+  };
 
   return (
     <>

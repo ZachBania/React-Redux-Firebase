@@ -1,6 +1,6 @@
 import { auth } from '../../_api/firebase';
 import { db } from '../../_api/firebase';
-import { getUser, updateUser, getUsers, userError, setActiveUser, setStateLogout } from '../reducers/userSlice';
+import { getUser, updateUser, getUsers, userError, setActiveUser, setStateLogout } from '../reducers/UserSlice';
 import { provider } from '../../_api/firebase';
 
 export const setLogin = () => async (dispatch) => {
@@ -55,11 +55,12 @@ export const getUserAsync = (userId) => async (dispatch) => {
 };
 
 export const updateUserAsync = (user) => async (dispatch) => {
+    const userRef = db.collection('Users').doc(user.id);
     try {
         const userRef = db.collection('Users').doc(user.id);
         await userRef.update(user);
-        
         dispatch(updateUser(user));
+
     } catch (error) {
         console.error('Error updating user:', error);
         dispatch(userError(error));
