@@ -574,14 +574,41 @@ footer {
 .dashboard-notifications-container {
   width: 100%;
   padding: .5em;
-  
   border: $color_outline solid 2px;
   border-radius: .25em;
-
+  position: relative;
 
   h2 {
     font-size: 1.25em;
     font-weight: 800;
+    padding: 0;
+    margin: 0 0 .5em 0;
+  }
+
+  ul.dashboard-notifications-utilities-container {
+    margin: 0 0 .5em 0;
+    padding: .5em;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: unset;
+    bottom: unset;
+
+    display: flex;
+    flex-wrap: nowrap;
+    gap: .5em;
+
+    li {
+
+      p {
+
+        &.btn {
+          font-size: .75em;
+          padding: .25em .5em;
+        }
+      }
+    }
   }
 
   .list-group {
@@ -591,9 +618,13 @@ footer {
 
     .list-group-item {
       position: relative;
-      margin: 0;
       padding: .25em;
+      margin: 0 0 .25em 0;
       border: $color_outline solid 1px;
+
+      &:last-of-type {
+        margin: 0;
+      }
 
 
       &::before {
@@ -670,6 +701,28 @@ footer {
 
       .list-item-content {
         padding: 0 0 0 .5em;
+
+        .notification-header {
+          font-size: 1em;
+          font-weight: 800;
+          margin: 0;
+          padding: 0;
+        }
+
+        .notification-body {
+
+        }
+
+        .notification-timestamp {
+          position: absolute;
+          top: 0;
+          right: 0;
+          left: unset;
+          bottom: unset;
+
+          font-size: .75em;
+          padding: .25em .25em 0 0;
+        }
       }
     }
   }

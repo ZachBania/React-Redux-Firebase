@@ -17,7 +17,6 @@ export default function TimeoutNotification({ notification }) {
         <Alert variant={(notification.type && bsAlertTypes.includes(notification.type)) ? notification.type : 'info'} >
           <Alert.Heading>{notification.header}</Alert.Heading>
           <p class="alert-body">{notification.body}</p>
-          <p class="alert-timestamp">{formatNotificationTimestamp(notification.timestamp)}</p>
         </Alert>
       </div>
     </>

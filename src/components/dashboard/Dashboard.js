@@ -82,9 +82,7 @@ const Dashboard = () => {
                         <Col className={'col'} sm="12" md="4" lg="4" xl="4" xxl="4">
                             {notificationsByAuthor ? (
                                 <>
-                                {/* <Notifications notifications={notificationsByAuthor} /> */}
-                                
-                                <DashboardNotifications notifications={notificationsByAuthor} />
+                                    <DashboardNotifications notifications={notificationsByAuthor} />
                                 </>
                             ) : ('')}
 

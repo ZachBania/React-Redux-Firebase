@@ -12603,10 +12603,29 @@ footer .row .col a:focus {
   padding: 0.5em;
   border: #000 solid 2px;
   border-radius: 0.25em;
+  position: relative;
 }
 .dashboard-notifications-container h2, .dashboard-notifications-container .h2 {
   font-size: 1.25em;
   font-weight: 800;
+  padding: 0;
+  margin: 0 0 0.5em 0;
+}
+.dashboard-notifications-container ul.dashboard-notifications-utilities-container {
+  margin: 0 0 0.5em 0;
+  padding: 0.5em;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: unset;
+  bottom: unset;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5em;
+}
+.dashboard-notifications-container ul.dashboard-notifications-utilities-container li p.btn {
+  font-size: 0.75em;
+  padding: 0.25em 0.5em;
 }
 .dashboard-notifications-container .list-group {
   border-radius: 0;
@@ -12615,9 +12634,12 @@ footer .row .col a:focus {
 }
 .dashboard-notifications-container .list-group .list-group-item {
   position: relative;
-  margin: 0;
   padding: 0.25em;
+  margin: 0 0 0.25em 0;
   border: #000 solid 1px;
+}
+.dashboard-notifications-container .list-group .list-group-item:last-of-type {
+  margin: 0;
 }
 .dashboard-notifications-container .list-group .list-group-item::before {
   content: " ";
@@ -12689,6 +12711,21 @@ footer .row .col a:focus {
 }
 .dashboard-notifications-container .list-group .list-group-item .list-item-content {
   padding: 0 0 0 0.5em;
+}
+.dashboard-notifications-container .list-group .list-group-item .list-item-content .notification-header {
+  font-size: 1em;
+  font-weight: 800;
+  margin: 0;
+  padding: 0;
+}
+.dashboard-notifications-container .list-group .list-group-item .list-item-content .notification-timestamp {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: unset;
+  bottom: unset;
+  font-size: 0.75em;
+  padding: 0.25em 0.25em 0 0;
 }
 
 /*# sourceMappingURL=App.css.map */

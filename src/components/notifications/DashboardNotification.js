@@ -2,6 +2,7 @@
 import React from 'react';
 
 // Component Imports
+import { formatNotificationTimestamp } from '../../_redux/actions/NotificationActions';
 
 // Bootstrap Imports
 import { ListGroup } from 'react-bootstrap';
@@ -13,8 +14,9 @@ export default function DashboardNotification({ notification }) {
     <>
       <ListGroup.Item className={"list-item-" + notification.type}>
         <div className='list-item-content'>
-          <p>{notification.header}</p>
-          <p>{notification.body}</p>
+          <h3 className='notification-header'>{notification.header}</h3>
+          <p className='notification-body'>{notification.body}</p>
+          <p className='notification-timestamp'>{formatNotificationTimestamp(notification.timestamp)}</p>
         </div>
       </ListGroup.Item>
     </>

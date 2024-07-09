@@ -21,9 +21,6 @@ export const getNotificationsByAuthorAsync = (author) => {
     return async (dispatch) => {
         try {
             const snapshot = await db.collection('Notifications').where('author', '==', author).get();
-            
-
-            
             let notifications = [];
             snapshot.forEach(doc => {
                 notifications.push({ id: doc.id, ...doc.data() });
@@ -34,6 +31,20 @@ export const getNotificationsByAuthorAsync = (author) => {
         }
     };
 };
+
+export const deleteNotificationsByAuthorAsync = (author) => {
+    return async (dispatch) => {
+        try {
+            const snapshot = await db.collection('Notifications').where('author', '==', author).get();
+            snapshot.forEach(doc => {
+                db.collection('Notifications').doc(doc.id).delete();
+            });
+            dispatch(getNotificationsByAuthorAsync(author));
+        } catch (error) {
+            dispatch(notificationError(error));
+        }
+    };
+}
 
 export const createNotification = (type, header, body, author) => {
     return async (dispatch) => {
