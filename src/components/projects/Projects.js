@@ -1,11 +1,11 @@
 // Core Imports
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProjectsAsync } from "../../_redux/actions/ProjectActions";
 
 // Component Imports
 import StaticHeader from "../parts/StaticHeader";
 import Project from "./Project";
+import { getProjectsAsync } from "../../_redux/actions/ProjectActions";
 
 // Bootstrap Imports 
 import Row from 'react-bootstrap/Row';

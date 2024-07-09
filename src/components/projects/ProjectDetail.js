@@ -5,9 +5,8 @@ import { useParams } from 'react-router-dom';
 
 // Component Imports
 import StaticHeader from '../parts/StaticHeader';
-import { getProjectAsync } from '../../_redux/actions/ProjectActions'; // Imported the correct action
+import { getProjectAsync, updateProjectViewsAsync } from '../../_redux/actions/ProjectActions';
 import PageNotFound from '../navigation/PageNotFound';
-
 
 // Bootstrap Imports
 import { Row, Col } from "react-bootstrap";
@@ -18,7 +17,8 @@ export default function ProjectDetail() {
     const project = useSelector(state => state.project.project);
 
     useEffect(() => {
-        dispatch(getProjectAsync(id)); 
+        dispatch(getProjectAsync(id));
+        dispatch(updateProjectViewsAsync(id));
     }, [dispatch, id]);
 
     return (

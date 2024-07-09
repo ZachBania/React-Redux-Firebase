@@ -1,10 +1,10 @@
 // Core Imports
 import './App.css';
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor} from './_redux/store';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Route, Routes } from 'react-router-dom';
 
 // Component Imports
 import Navigation from './components/navigation/Navigation';
@@ -40,6 +40,7 @@ function App() {
             </Routes>
             <Footer />
           </Container>
+
         </PersistGate>
       </Provider>
     </>

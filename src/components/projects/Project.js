@@ -2,11 +2,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// Component Imports
+
 // Bootstrap Imports
-import Stack from 'react-bootstrap/Stack';
 
 const Project = ({ project }) => {
-  console.log( project.header, project);
   return (
     <>
       <div className="project-container">

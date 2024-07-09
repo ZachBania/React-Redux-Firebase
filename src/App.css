@@ -12598,4 +12598,97 @@ footer .row .col a:focus {
   background: #FFF;
 }
 
+.dashboard-notifications-container {
+  width: 100%;
+  padding: 0.5em;
+  border: #000 solid 2px;
+  border-radius: 0.25em;
+}
+.dashboard-notifications-container h2, .dashboard-notifications-container .h2 {
+  font-size: 1.25em;
+  font-weight: 800;
+}
+.dashboard-notifications-container .list-group {
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+}
+.dashboard-notifications-container .list-group .list-group-item {
+  position: relative;
+  margin: 0;
+  padding: 0.25em;
+  border: #000 solid 1px;
+}
+.dashboard-notifications-container .list-group .list-group-item::before {
+  content: " ";
+  background: transparent;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: unset;
+  bottom: 0;
+  width: 0.5em;
+  height: 100%;
+  display: block;
+}
+.dashboard-notifications-container .list-group .list-group-item.list-item-primary {
+  background: #000;
+  color: #5fdbf8;
+}
+.dashboard-notifications-container .list-group .list-group-item.list-item-primary::before {
+  background: #5fdbf8;
+}
+.dashboard-notifications-container .list-group .list-group-item.list-item-secondary {
+  background: #000;
+  color: #5fdbf8;
+}
+.dashboard-notifications-container .list-group .list-group-item.list-item-secondary::before {
+  background: #5fdbf8;
+}
+.dashboard-notifications-container .list-group .list-group-item.list-item-success {
+  background: transparent;
+  color: #000;
+}
+.dashboard-notifications-container .list-group .list-group-item.list-item-success::before {
+  background: rgb(7, 201, 0);
+}
+.dashboard-notifications-container .list-group .list-group-item.list-item-danger {
+  background: transparent;
+  color: #000;
+}
+.dashboard-notifications-container .list-group .list-group-item.list-item-danger::before {
+  background: rgb(255, 90, 90);
+}
+.dashboard-notifications-container .list-group .list-group-item.list-item-warning {
+  background: transparent;
+  color: #000;
+}
+.dashboard-notifications-container .list-group .list-group-item.list-item-warning::before {
+  background: rgb(255, 175, 26);
+}
+.dashboard-notifications-container .list-group .list-group-item.list-item-info {
+  background: transparent;
+  color: #000;
+}
+.dashboard-notifications-container .list-group .list-group-item.list-item-info::before {
+  background: #000;
+}
+.dashboard-notifications-container .list-group .list-group-item.list-item-light {
+  background: #FFF;
+  color: #000;
+}
+.dashboard-notifications-container .list-group .list-group-item.list-item-light::before {
+  background: #000;
+}
+.dashboard-notifications-container .list-group .list-group-item.list-item-dark {
+  background: #000;
+  color: #FFF;
+}
+.dashboard-notifications-container .list-group .list-group-item.list-item-dark::before {
+  background: #FFF;
+}
+.dashboard-notifications-container .list-group .list-group-item .list-item-content {
+  padding: 0 0 0 0.5em;
+}
+
 /*# sourceMappingURL=App.css.map */

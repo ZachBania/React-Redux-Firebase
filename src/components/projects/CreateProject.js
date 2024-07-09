@@ -1,16 +1,15 @@
 // Core Imports
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { isAuthenticated, selectUserEmail, selectUserName } from "../../_redux/reducers/UserSlice";
 import { useSelector } from "react-redux";
 
 // Component Imports
 import { createProjectAsync } from "../../_redux/actions/ProjectActions";
 import { createNotification, getNotificationsByAuthorAsync } from "../../_redux/actions/NotificationActions";
+import { selectUserEmail } from "../../_redux/reducers/UserSlice";
 
 // Bootstrap Imports
-import { Link } from "react-router-dom";
-import { Row, Col, Form, Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 const CreateProject = () => {
     const userEmail = useSelector(selectUserEmail);

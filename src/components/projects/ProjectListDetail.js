@@ -6,7 +6,6 @@ import React from 'react'
 // Bootstrap Imports
 import { Row, Col } from "react-bootstrap";
 
-
 export default function ProjectListDetail() {
     return (
         <>
@@ -19,7 +18,6 @@ export default function ProjectListDetail() {
                 <Col className={'col'} sm="12" md="12" lg="12" xl="12" xxl="12">
 
                     <p className="project-name">Project Header: </p>
-
                     <p className="id">id: </p>
                     <p className="header">header: </p>
                     <p className="description">description: </p>

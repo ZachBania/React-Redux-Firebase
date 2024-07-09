@@ -1,14 +1,13 @@
 // Core Imports
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { selectUserEmail } from "../../_redux/reducers/UserSlice";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 // Component Imports
 import { getProjectAsync, updateProjectAsync, deleteProjectAsync } from "../../_redux/actions/ProjectActions";
 import StaticHeader from "../parts/StaticHeader";
 import { createNotification } from "../../_redux/actions/NotificationActions";
+import { selectUserEmail } from "../../_redux/reducers/UserSlice";
 
 // Bootstrap Components
 import { Row, Col, Form, Button } from "react-bootstrap";

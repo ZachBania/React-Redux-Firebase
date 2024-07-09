@@ -19,7 +19,7 @@ const Footer = () => (
         </Row>        
         <Row>
             <Col className={'col'} sm="12" md="12" lg="6" xl="6" xxl="6">
-                <p><Link to="/">GitHub</Link></p>
+                <p><Link to="https://github.com/ZachBania/React-Redux-Firebase">GitHub</Link></p>
             </Col>
             <Col className={'col'} sm="12" md="12" lg="6" xl="6" xxl="6">
                 

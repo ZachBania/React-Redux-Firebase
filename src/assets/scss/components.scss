@@ -410,12 +410,10 @@ footer {
       }
 
       @media (min-width: 768px) {
-
         div:nth-child(1),
         div:nth-child(2),
         div:nth-child(3) {
-          flex: calc( (100%/3) - 2em );
-          
+          flex: calc((100% / 3) - 2em);
         }
       }
     }
@@ -568,6 +566,110 @@ footer {
         &::before {
           background: $color_primary_light;
         }
+      }
+    }
+  }
+}
+
+.dashboard-notifications-container {
+  width: 100%;
+  padding: .5em;
+  
+  border: $color_outline solid 2px;
+  border-radius: .25em;
+
+
+  h2 {
+    font-size: 1.25em;
+    font-weight: 800;
+  }
+
+  .list-group {
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+
+    .list-group-item {
+      position: relative;
+      margin: 0;
+      padding: .25em;
+      border: $color_outline solid 1px;
+
+
+      &::before {
+        content: " ";
+        background: transparent;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: unset;
+        bottom: 0;
+        width: 0.5em;
+        height: 100%;
+        display: block;
+      }
+
+      $default-alert-background: transparent;
+
+      &.list-item-primary {
+        background: $color_primary_dark;
+        color: $color_primary;
+        &::before {
+          background: $color_primary;
+        }
+      }
+      &.list-item-secondary {
+        background: $color_primary_dark;
+        color: $color_primary;
+        &::before {
+          background: $color_primary;
+        }
+      }
+      &.list-item-success {
+        background: $default-alert-background;
+        color: $color_primary_dark;
+        &::before {
+          background: rgb(7, 201, 0);
+        }
+      }
+      &.list-item-danger {
+        background: $default-alert-background;
+        color: $color_primary_dark;
+        &::before {
+          background: rgb(255, 90, 90);
+        }
+      }
+      &.list-item-warning {
+        background: $default-alert-background;
+        color: $color_primary_dark;
+        &::before {
+          background: rgb(255, 175, 26);
+        }
+      }
+      &.list-item-info {
+        background: $default-alert-background;
+        color: $color_primary_dark;
+        &::before {
+          background: $color_primary_dark;
+        }
+      }
+      &.list-item-light {
+        background: $color_primary_light;
+        color: $color_primary_dark;
+        &::before {
+          background: $color_primary_dark;
+        }
+      }
+      &.list-item-dark {
+        background: $color_primary_dark;
+        color: $color_primary_light;
+        &::before {
+          background: $color_primary_light;
+        }
+      }
+
+      .list-item-content {
+        padding: 0 0 0 .5em;
       }
     }
   }

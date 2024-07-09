@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { persistor } from '../store';
 
 const initialState = { 
   users: [], 

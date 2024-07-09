@@ -1,21 +1,20 @@
+// Core Imports
 import React, { useEffect } from "react";
-import { getProjectsAsync } from '../../_redux/actions/ProjectActions';
-import { getNotificationsAsync, getNotificationsByAuthorAsync } from '../../_redux/actions/NotificationActions';
 import { useDispatch, useSelector } from "react-redux";
-import { isAuthenticated, selectUserEmail, selectUserName } from "../../_redux/reducers/UserSlice";
+import { isAuthenticated, selectUserEmail } from "../../_redux/reducers/UserSlice";
 
 // Component Imports
 import StaticHeader from "../parts/StaticHeader";
-import CreateProject from "../projects/CreateProject";
 import ProjectList from "../projects/ProjectList";
+import CreateProject from "../projects/CreateProject";
+import { getProjectsAsync } from '../../_redux/actions/ProjectActions';
 import UserList from "../users/UserList";
 import Profile from "../users/Profile";
-
-import Notifications from "../notifications/Notifications";
-import NotAuthorized from "../navigation/NotAuthorized";
-
 import { getUsersAsync } from "../../_redux/actions/UserActions";
 import { selectActiveUser } from "../../_redux/reducers/UserSlice";
+import { getNotificationsByAuthorAsync } from '../../_redux/actions/NotificationActions';
+import NotAuthorized from "../navigation/NotAuthorized";
+import DashboardNotifications from "../notifications/DashboardNotifications";
 
 // Bootstrap Imports
 import { Row, Col, Accordion, Tabs, Tab } from "react-bootstrap";
@@ -82,7 +81,11 @@ const Dashboard = () => {
                         </Col>
                         <Col className={'col'} sm="12" md="4" lg="4" xl="4" xxl="4">
                             {notificationsByAuthor ? (
-                                <Notifications notifications={notificationsByAuthor} />
+                                <>
+                                {/* <Notifications notifications={notificationsByAuthor} /> */}
+                                
+                                <DashboardNotifications notifications={notificationsByAuthor} />
+                                </>
                             ) : ('')}
 
                         </Col>

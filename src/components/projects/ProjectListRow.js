@@ -1,12 +1,10 @@
 // Core Imports
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // Component Imports
-import ManageProject from "./ManageProject";
 
 // Bootstrap Imports
-import Stack from 'react-bootstrap/Stack';
 
 const ProjectListRow = ({ project }) => {
   let navigate = useNavigate();
@@ -26,6 +24,7 @@ const ProjectListRow = ({ project }) => {
       {/* <td><p className="description_three">{project.description[2]}</p></td> */}
       <td><p className="excerpt">{project.excerpt}</p></td>
       <td><p className="category_owner">{project.category_owner}</p></td>
+      <td><p className="views">{project.views}</p></td>
       {/* <td><p className="meta">{project.meta}</p></td> */}
       {/* <Link to={`/projects/${project.id}`} className="btn">View Project</Link> */}
     </tr>

@@ -42,7 +42,7 @@ export const setLogout = () => async (dispatch) => {
 export const getUserAsync = (userId) => async (dispatch) => {
     try {
         const userDoc = await db.collection('Users').doc(userId).get();
-        
+
         if (userDoc.exists) {
             dispatch(getUser({ id: userDoc.id, ...userDoc.data() }));
         } else {

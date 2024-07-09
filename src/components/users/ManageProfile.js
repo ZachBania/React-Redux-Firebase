@@ -1,14 +1,12 @@
 // Core Imports
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectActiveUser } from "../../_redux/reducers/UserSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 // Component Imports
 import StaticHeader from "../parts/StaticHeader";
-import { getUserAsync, updateUserAsync } from "../../_redux/actions/UserActions";
+import { updateUserAsync } from "../../_redux/actions/UserActions";
+import { selectActiveUser } from "../../_redux/reducers/UserSlice";
 import { createNotification } from "../../_redux/actions/NotificationActions";
 
 // Bootstrap Components
@@ -39,7 +37,6 @@ const ManageProfile = () => {
       });
     }
   }, [activeUser]);
-
 
   const handleChange = (e) => {
     const { id, value } = e.target;

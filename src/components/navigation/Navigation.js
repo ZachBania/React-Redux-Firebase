@@ -1,32 +1,37 @@
 // Core Imports
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { auth, provider } from "./../../_api/firebase";
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setActiveUser, selectUserEmail, selectUserName } from "../../_redux/reducers/UserSlice";
+import { selectUserEmail } from "../../_redux/reducers/UserSlice";
 
 // Component Imports
+import TimeoutNotifications from '../notifications/TimeoutNotifications';
 import { isAuthenticated } from '../../_redux/reducers/UserSlice';
 import logo from '../../assets/images/logo512.png';
-import { getNotificationsAsync, getNotificationsByAuthorAsync } from '../../_redux/actions/NotificationActions';
-import TimeoutNotifications from '../notifications/TimeoutNotifications';
+import { getNotificationsByAuthorAsync } from '../../_redux/actions/NotificationActions';
+import { setLogin, setLogout } from '../../_redux/actions/UserActions';
 
 // Bootstrap Imports
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { setLogin, setLogout } from '../../_redux/actions/UserActions';
-
 
 const Navigation = () => {
     const dispatch = useDispatch();
     const isAuth = useSelector(isAuthenticated);
     const userEmail = useSelector(selectUserEmail);
-
     const timeoutNotifications = useSelector(state => state.notification.timeoutNotifications);
 
     useEffect(() => {
         dispatch(getNotificationsByAuthorAsync(userEmail));
     }, [dispatch, userEmail]);
+
+    function handleLogin() {
+        dispatch(setLogin());
+    }
+
+    function handleLogout() {
+        dispatch(setLogout());
+    }
 
     return (
         <>
@@ -51,11 +56,11 @@ const Navigation = () => {
                         <ul>
                             {isAuth ? (
                                 <>
-                                    <li><Link to="/" onClick={() => dispatch(setLogout())}>Logout</Link></li>
+                                    <li><Link to="/" onClick={handleLogout}>Logout</Link></li>
                                 </>
                             ) : (
                                 <>
-                                    <li><Link to="/" onClick={() => dispatch(setLogin())}>Login</Link></li>
+                                    <li><Link to="/" onClick={handleLogin}>Login</Link></li>
                                 </>
                             )}
                         </ul>

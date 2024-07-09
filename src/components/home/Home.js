@@ -1,3 +1,4 @@
+// Core Imports
 import './../../App.css';
 import React from 'react';
 
@@ -8,7 +9,6 @@ import DefaultHeader from '../parts/DefaultHeader';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const REACT_VERSION = React.version;
 function Home() {
 
   return (

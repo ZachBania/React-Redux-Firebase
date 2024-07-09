@@ -1,13 +1,10 @@
 // Core Imports
 import React from "react";
-import { selectActiveUser } from "../../_redux/reducers/UserSlice";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 // Component Imports
 
 // Bootstrap Imports
-import { ListGroup } from "react-bootstrap";
 
 const Profile = ({ user }) => {
 
