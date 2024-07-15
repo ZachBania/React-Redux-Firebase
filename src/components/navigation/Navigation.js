@@ -12,18 +12,17 @@ import { getNotificationsByAuthorAsync } from '../../_redux/actions/Notification
 import { setLogin, setLogout } from '../../_redux/actions/UserActions';
 
 // Bootstrap Imports
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import { Nav, Navbar } from 'react-bootstrap';
 
 const Navigation = () => {
     const dispatch = useDispatch();
     const isAuth = useSelector(isAuthenticated);
-    const userEmail = useSelector(selectUserEmail);
+    const activeUserEmail = useSelector(selectUserEmail);
     const timeoutNotifications = useSelector(state => state.notification.timeoutNotifications);
 
     useEffect(() => {
-        dispatch(getNotificationsByAuthorAsync(userEmail));
-    }, [dispatch, userEmail]);
+        dispatch(getNotificationsByAuthorAsync(activeUserEmail));
+    }, [dispatch, activeUserEmail]);
 
     function handleLogin() {
         dispatch(setLogin());
@@ -47,6 +46,7 @@ const Navigation = () => {
                     <Nav className="me-auto">
                         <ul>
                             {isAuth ? <li><Link to="/dashboard">Dashboard</Link></li> : ''}
+                            <li><Link to="/the-wall">The Wall</Link></li>
                             <li><Link to="/projects">Projects</Link></li>
                         </ul>
                     </Nav>

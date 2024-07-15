@@ -9,18 +9,19 @@ import { deleteNotificationsByAuthorAsync } from '../../_redux/actions/Notificat
 
 // Bootstrap Componets
 import { ListGroup } from 'react-bootstrap';
-import { faCoffee, faSquareMinus } from '@fortawesome/free-solid-svg-icons'
+import { faSquareMinus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function DashboardNotifications({ notifications }) {
     const activeUser = useSelector(selectActiveUser);
     const dispatch = useDispatch();
-    const userEmail = useSelector(selectUserEmail);
+    const activeUserEmail = useSelector(selectUserEmail);
+    
 
 
     function deleteNotifications() {
         // Delete Notifications
-        dispatch(deleteNotificationsByAuthorAsync(userEmail));
+        dispatch(deleteNotificationsByAuthorAsync(activeUserEmail));
     }
     return (
         <>

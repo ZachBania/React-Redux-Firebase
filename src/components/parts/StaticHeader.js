@@ -1,5 +1,6 @@
 // Core Imports
 import React from 'react';
+import { motion } from 'framer-motion';
 
 // Component Imports
 
@@ -11,7 +12,8 @@ function StaticHeader(props) {
     return (
         <Row>
             <Col className={'static-header-component col'} sm="true" md="true" lg="true" xl="true" xxl="true">
-                <h1>{props.headerText}</h1>
+                <motion.h1 className={'static-header'} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                >{props.headerText}</motion.h1>
             </Col>
         </Row>
     );

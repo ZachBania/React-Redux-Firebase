@@ -12728,4 +12728,125 @@ footer .row .col a:focus {
   padding: 0.25em 0.25em 0 0;
 }
 
+.wall-container .col:nth-child(1) {
+  padding: 0.5em;
+}
+@media (min-width: 768px) {
+  .wall-container .col:nth-child(1) {
+    padding: 1em 1em 1em 2em;
+  }
+}
+.wall-container .col:nth-child(1) .wall--inner-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 0;
+}
+.wall-container .col:nth-child(1) .wall--inner-container .post-container {
+  flex: 1 1 100%;
+  padding: 0.5em 0.5em 0.5em 1em;
+  position: relative;
+  outline: #000 solid 1px;
+  border-radius: 0.25em;
+  overflow: hidden;
+}
+.wall-container .col:nth-child(1) .wall--inner-container .post-container:before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: unset;
+  width: 0.5em;
+  height: 100%;
+  display: block;
+  background: rgba(0, 0, 0, 0.5);
+}
+.wall-container .col:nth-child(1) .wall--inner-container .post-container.by-active-user:before {
+  background: #5fdbf8;
+}
+.wall-container .col:nth-child(1) .wall--inner-container .post-container .post--inner-container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.wall-container .col:nth-child(1) .wall--inner-container .post-container .post--inner-container .post-rating-container {
+  display: inline-block;
+  padding: 0 0 0 0.25em;
+  margin: 0;
+}
+.wall-container .col:nth-child(1) .wall--inner-container .post-container .post--inner-container .post-rating-container .post-rating {
+  padding: 0;
+  margin: 0 auto;
+}
+.wall-container .col:nth-child(1) .wall--inner-container .post-container .post--inner-container .post-rating-container .post-rating .fa-chevron-up,
+.wall-container .col:nth-child(1) .wall--inner-container .post-container .post--inner-container .post-rating-container .post-rating .fa-chevron-down {
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.5);
+}
+.wall-container .col:nth-child(1) .wall--inner-container .post-container .post--inner-container .post-rating-container .post-rating .fa-chevron-up.active,
+.wall-container .col:nth-child(1) .wall--inner-container .post-container .post--inner-container .post-rating-container .post-rating .fa-chevron-down.active {
+  color: #000;
+}
+.wall-container .col:nth-child(1) .wall--inner-container .post-container .post--inner-container .post-rating-container .post-rating p {
+  text-align: center;
+  font-size: 1em;
+  line-height: 0.5em;
+}
+.wall-container .col:nth-child(1) .wall--inner-container .post-container .post--inner-container .post-content-container {
+  padding: 0 0.5em 0.5em 0.5em;
+  width: 100%;
+}
+.wall-container .col:nth-child(1) .wall--inner-container .post-container .post--inner-container .post-content-container .post-header-container .post-header {
+  font-size: 1.25em;
+  font-weight: 800;
+  margin: 0;
+  padding: 0;
+}
+.wall-container .col:nth-child(1) .wall--inner-container .post-container .post--inner-container .post-content-container .post-author-container {
+  outline: black solid 1px;
+}
+.wall-container .col:nth-child(1) .wall--inner-container .post-container .post--inner-container .post-content-container .post-timestamp-container {
+  outline: black solid 1px;
+}
+.wall-container .col:nth-child(1) .wall--inner-container .post-container .post--inner-container .post-content-container .post-body-container .post-body {
+  margin: 0;
+  padding: 0;
+}
+.wall-container .col:nth-child(1) .wall--inner-container .no-posts {
+  flex: 1 1 100%;
+  padding: 0.5em 0.5em 0.5em 1em;
+  position: relative;
+  outline: #000 solid 1px;
+  border-radius: 0.25em;
+}
+
+.create-post-container form {
+  width: 100%;
+  max-width: 100%;
+  padding: 0.5em !important;
+  border: 0 !important;
+  outline: #000 solid 1px;
+}
+.create-post-container form div {
+  padding: 0 0 0.5em 0 !important;
+}
+.create-post-container form div label {
+  display: none;
+}
+.create-post-container form div textarea {
+  height: 4em;
+  max-height: 4em;
+  min-height: 4em;
+}
+.create-post-container form div.submit-container {
+  justify-content: end;
+  padding: 0 !important;
+}
+.create-post-container form div.submit-container .btn {
+  display: block;
+  text-align: right;
+  width: 100% !important;
+}
+
 /*# sourceMappingURL=App.css.map */

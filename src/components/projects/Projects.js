@@ -1,6 +1,7 @@
 // Core Imports
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { motion } from "framer-motion";
 
 // Component Imports
 import StaticHeader from "../parts/StaticHeader";
@@ -8,8 +9,7 @@ import Project from "./Project";
 import { getProjectsAsync } from "../../_redux/actions/ProjectActions";
 
 // Bootstrap Imports 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Row, Col } from 'react-bootstrap';
 
 export default function Projects() {
     const dispatch = useDispatch();
@@ -27,7 +27,12 @@ export default function Projects() {
                 </Col>
             </Row>
 
-            <Row className='row projects-container'>
+            <motion.div className='row projects-container'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+            >
                 <Col className={'col'} sm="12" md="12" lg="8" xl="8" xxl="8">
                     {projects && projects.map(project => (
                         <Project project={project} key={project.id} />
@@ -35,7 +40,7 @@ export default function Projects() {
                 </Col>
                 <Col className={'col'} sm="12" md="12" lg="4" xl="4" xxl="4">
                 </Col>
-            </Row>
+            </motion.div>
         </>
     );
 }

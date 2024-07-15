@@ -1,7 +1,5 @@
-import { auth } from '../../_api/firebase';
-import { db } from '../../_api/firebase';
+import { auth, db, provider } from '../../_api/firebase';
 import { getUser, updateUser, getUsers, userError, setActiveUser, setStateLogout } from '../reducers/UserSlice';
-import { provider } from '../../_api/firebase';
 
 export const setLogin = () => async (dispatch) => {
     auth.signInWithPopup(provider).then((res) => {
@@ -49,7 +47,6 @@ export const getUserAsync = (userId) => async (dispatch) => {
             console.log('No such document!');
         }
     } catch (error) {
-        console.error('Error fetching user:', error);
         dispatch(userError(error));
     }
 };
@@ -62,7 +59,6 @@ export const updateUserAsync = (user) => async (dispatch) => {
         dispatch(updateUser(user));
 
     } catch (error) {
-        console.error('Error updating user:', error);
         dispatch(userError(error));
     }
 };

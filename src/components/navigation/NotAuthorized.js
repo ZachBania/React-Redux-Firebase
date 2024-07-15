@@ -6,8 +6,7 @@ import { Link } from "react-router-dom";
 import StaticHeader from '../parts/StaticHeader';
 
 // Bootstrap Imports
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Row, Col} from 'react-bootstrap';
 
 export default function NotAuthorized() {
 

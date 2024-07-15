@@ -18,8 +18,13 @@ import ProjectDetail from './components/projects/ProjectDetail';
 import ManageProject from './components/projects/ManageProject';
 import ManageProfile from './components/users/ManageProfile';
 
+// Component Imports - Posts
+import Wall from './components/posts/Wall';
+
 // Bootstrap Imports
 import Container from 'react-bootstrap/Container';
+
+import { motion } from 'framer-motion';
 
 function App() {
   return (
@@ -31,6 +36,7 @@ function App() {
           <Container>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/the-wall" element={<Wall />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/projects/:id" element={<ProjectDetail />} />

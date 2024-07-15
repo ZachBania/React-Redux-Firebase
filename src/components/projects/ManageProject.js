@@ -14,7 +14,7 @@ import { Row, Col, Form, Button } from "react-bootstrap";
 
 const ManageProject = () => {
   const navigate = useNavigate(null);
-  const userEmail = useSelector(selectUserEmail);
+  const activeUserEmail = useSelector(selectUserEmail);
   const { id } = useParams();
   const project = useSelector(state => state.project.project);
   const dispatch = useDispatch();
@@ -66,7 +66,7 @@ const ManageProject = () => {
       'success',
       'Project Updated',
       formData.header + " was updated.",
-      userEmail
+      activeUserEmail
     )).then(() => {
       navigate('/dashboard');
     });
@@ -78,7 +78,7 @@ const ManageProject = () => {
       'danger',
       'Project Deleted',
       formData.header + " was deleted.",
-      userEmail
+      activeUserEmail
     )).then(() => {
       navigate('/dashboard');
     });

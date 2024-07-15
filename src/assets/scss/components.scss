@@ -727,3 +727,168 @@ footer {
     }
   }
 }
+
+.wall-container {
+
+  .col:nth-child(1) {
+    padding: .5em;
+
+    @media(min-width:768px) {
+      padding: 1em 1em 1em 2em;
+    }
+    .wall--inner-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      padding: 0;
+      
+      .post-container {
+        flex: 1 1 100%;
+        padding: .5em .5em .5em 1em;
+        position: relative;
+        outline: $color_outline solid 1px;
+        border-radius: .25em;
+        overflow: hidden;
+
+        &:before {
+          content: " ";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: unset;
+          width: .5em;
+          height: 100%;
+          display: block;
+
+          background: rgba(0, 0, 0, 0.5);
+        }
+
+        &.by-active-user  {
+          &:before {
+            background: $color_primary;
+          }
+        }
+
+        .post--inner-container {
+          display: flex;
+          flex-wrap: nowrap;
+
+          .post-rating-container {
+            display: inline-block;
+            padding: 0 0 0 .25em;
+            margin: 0;
+
+            .post-rating {
+              padding: 0;
+              margin: 0 auto;
+              .fa-chevron-up,
+              .fa-chevron-down  {
+                margin: 0;
+                padding: 0;
+                color: rgba(0, 0, 0, 0.5);
+
+                &.active {
+                  color: $color_primary_dark;
+                }
+              }
+  
+              p {
+                text-align: center;
+                font-size: 1em;
+                line-height: .5em;
+
+                
+              }
+            }
+          }
+
+          .post-content-container {
+            padding: 0 0.5em .5em .5em;
+            width: 100%;
+
+            .post-header-container {
+    
+              .post-header {
+                font-size: 1.25em;
+                font-weight: 800;
+                margin: 0;
+                padding: 0;            
+              }
+            }
+
+            .post-author-container {
+              outline: black solid 1px;
+              .post-author {
+
+              }
+
+            }
+
+            .post-timestamp-container {
+              outline: black solid 1px;
+
+              .post-timestamp {
+
+              }
+            }
+    
+            .post-body-container {
+    
+              .post-body {
+                margin: 0;
+                padding: 0;
+              }
+            }
+          }
+
+        }
+      }
+      
+      .no-posts {
+        flex: 1 1 100%;
+        padding: .5em .5em .5em 1em;
+        position: relative;
+        outline: $color_outline solid 1px;
+        border-radius: .25em;
+      }
+    }
+  }
+}
+
+.create-post-container {
+
+  form {
+    width: 100%;
+    max-width: 100%;
+    padding: .5em !important;
+    border: 0 !important;
+    outline: $color_outline solid 1px;
+
+    div {
+      padding: 0 0 .5em 0 !important;
+
+      label {
+        display: none;
+      }
+
+      textarea {
+        height: 4em;
+        max-height: 4em;
+        min-height: 4em;
+      }
+
+      &.submit-container {
+        justify-content: end;
+        padding: 0 !important;
+
+        .btn {
+          display: block;
+          text-align: right;
+          width: 100% !important;
+        }
+      }
+    }
+
+  }
+}

@@ -20,6 +20,7 @@
     "firebase-admin": "^12.1.1",
     "firebaseui": "^6.1.0",
     "firestore": "^1.1.6",
+    "framer-motion": "^11.3.2",
     "json-server": "^1.0.0-beta.1",
     "list-react-files": "^0.2.0",
     "process": "^0.11.10",

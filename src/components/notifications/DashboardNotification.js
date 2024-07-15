@@ -1,6 +1,5 @@
 // Core Imports
 import React from 'react';
-
 // Component Imports
 import { formatNotificationTimestamp } from '../../_redux/actions/NotificationActions';
 

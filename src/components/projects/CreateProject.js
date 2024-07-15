@@ -1,18 +1,17 @@
 // Core Imports
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // Component Imports
 import { createProjectAsync } from "../../_redux/actions/ProjectActions";
-import { createNotification, getNotificationsByAuthorAsync } from "../../_redux/actions/NotificationActions";
+import { getNotificationsByAuthorAsync } from "../../_redux/actions/NotificationActions";
 import { selectUserEmail } from "../../_redux/reducers/UserSlice";
 
 // Bootstrap Imports
 import { Form, Button } from "react-bootstrap";
 
 const CreateProject = () => {
-    const userEmail = useSelector(selectUserEmail);
+    const activeUserEmail = useSelector(selectUserEmail);
     const dispatch = useDispatch();
 
     const initialFormData = {
@@ -22,6 +21,7 @@ const CreateProject = () => {
         excerpt: '',
         meta: '',
         category_owner: '',
+        author: activeUserEmail,
     };
 
     const [formData, setFormData] = useState(initialFormData);
@@ -50,13 +50,7 @@ const CreateProject = () => {
             id: parseInt(formData.id)
         };
         dispatch(createProjectAsync(projectWithIdAsInt));
-        dispatch(createNotification(
-            'success',
-            'New Project Created',
-            formData.header + " was created.",
-            userEmail
-        ));
-        dispatch(getNotificationsByAuthorAsync(userEmail));
+        dispatch(getNotificationsByAuthorAsync(activeUserEmail));
         setFormData(initialFormData);
     }
 

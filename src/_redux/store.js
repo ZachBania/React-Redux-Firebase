@@ -3,6 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import userReducer, { setActiveUser, setStateLogout } from "./reducers/UserSlice";
 import projectReducer from "./reducers/ProjectSlice";
 import notificationReducer from "./reducers/NotificationSlice";
+import postReducer from "./reducers/PostSlice";
 import { auth, db } from '../_api/firebase';
 
 import { persistStore, persistReducer } from 'redux-persist';
@@ -18,6 +19,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userReducer,
   project: projectReducer,
+  post: postReducer,
   notification: notificationReducer,
 });
 
