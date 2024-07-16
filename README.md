@@ -6,14 +6,15 @@ This project was created with [Create React App](https://github.com/facebook/cre
 
 ```javascript
 // Components
-    // Redux (Store, Reducers, Actions)
+    // Redux (Store, Slice Reducers, Actions)
     // User Authentication through Google Provider (Login, Logout)
-    // Project List and Detail
+    // Project List, Project Detail, Post List
 
-// Dashboard Authenticated Compontents
+// Authenticated Compontents
     // Profile Management
-    // CRUD functionality (set up as 'Projects')
-    // Notifications for Project and User actions
+    // CRUD functionality ('Projects', 'Posts')
+    // Bootstrap Notifications 
+    // Rating functionality
 ```
 
 ## Built with Firebase and Firestore
@@ -26,4 +27,4 @@ This project implements [Firebase Auth](https://firebase.google.com/docs/auth) t
 
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser, npm start will run the app in the development mode.
 
-The page will reload when you make changes.
+### `sass --watch ./src/App.scss ./src/App.css`
