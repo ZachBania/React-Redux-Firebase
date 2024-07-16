@@ -20,7 +20,8 @@ export const getNotificationsAsync = () => {
 export const getNotificationsByAuthorAsync = (author) => {
     return async (dispatch) => {
         try {
-            const snapshot = await db.collection('Notifications').where('author', '==', author).get();
+            // add order by id to const snapshot = await db.collection('Notifications').where('author', '==', author).get()
+            const snapshot = await db.collection('Notifications').where('author', '==', author).orderBy('id', 'desc').get();
             let notifications = [];
             snapshot.forEach(doc => {
                 notifications.push({ id: doc.id, ...doc.data() });
@@ -49,9 +50,20 @@ export const deleteNotificationsByAuthorAsync = (author) => {
 export const createNotification = (type, header, body, author) => {
     return async (dispatch) => {
         try {
+
+            // Find the the amount of notifications +1 to set the id field
+            const notifications_snapshot = await db.collection('Notifications').get();
+            let notifications = [];
+            notifications_snapshot.forEach(doc => {
+                notifications.push({ id: doc.id, ...doc.data() });
+            });
+            const notification_id = notifications.length + 1;
+            
+
             const timestamp = new Date().toString();
             // Create Notification in Firestore
             await db.collection('Notifications').add({ 
+                id: notification_id,
                 type: type, 
                 header: header, 
                 body: body, 
