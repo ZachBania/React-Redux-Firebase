@@ -1,8 +1,7 @@
-// Core Imports
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { isAuthenticated, selectUserEmail } from "../../_redux/reducers/UserSlice";
-import { motion } from "framer-motion"
+import { Routes, Route, useNavigate, useLocation, Navigate } from "react-router-dom";
 
 // Component Imports
 import StaticHeader from "../parts/StaticHeader";
@@ -25,13 +24,17 @@ import { Row, Col, Accordion, Tabs, Tab } from "react-bootstrap";
 
 const Dashboard = () => {
     const dispatch = useDispatch();
-    const projects = useSelector(state => state.project.projects);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const path = location.pathname.split("/").pop();
+    const defaultTab = path || "overview";
 
     const users = useSelector(state => state.user.users);
-    const isAuth = useSelector(isAuthenticated);
-    const activeUserEmail = useSelector(selectUserEmail);
     const activeUser = useSelector(selectActiveUser);
+    const activeUserEmail = useSelector(selectUserEmail);
+    const isAuth = useSelector(isAuthenticated);
 
+    const projects = useSelector(state => state.project.projects);
     const notificationsByAuthor = useSelector(state => state.notification.notificationsByAuthor);
 
     useEffect(() => {
@@ -42,6 +45,10 @@ const Dashboard = () => {
     useEffect(() => {
         dispatch(getNotificationsByAuthorAsync(activeUserEmail));
     }, [dispatch, activeUserEmail]);
+
+    const handleTabSelect = (key) => {
+        navigate(`/dashboard/${key}`);
+    };
 
     return (
         <>
@@ -55,45 +62,49 @@ const Dashboard = () => {
                     
                     <Row className='row dashboard-container'>
                         <Col className={'col'} sm="12" md="8" lg="8" xl="8" xxl="8">
-
-                            <Tabs defaultActiveKey="overview" id="uncontrolled-tab-example">
+                            <Tabs activeKey={defaultTab} onSelect={handleTabSelect} id="controlled-tab-example">
                                 <Tab eventKey="overview" title="Overview">
-                                    <h3>All Users</h3>
-                                    {users && <UserList users={users} />}
+                                    <Routes>
+                                        <Route path="overview" element={<UserList users={users} />} />
+                                    </Routes>
                                 </Tab>
                                 <Tab eventKey="profile" title="Profile">
-                                    <h3>Profile</h3>
-                                    {activeUser && <Profile user={activeUser} />}
+                                <h3>Profile</h3>
+                                    <Routes>
+                                        <Route path="profile" element={<Profile user={activeUser} />} />
+                                    </Routes>
                                 </Tab>
                                 <Tab eventKey="projects" title="Projects">
-                                    <Accordion>
-                                        <Accordion.Item eventKey="0">
-                                            <Accordion.Header>Create Project</Accordion.Header>
-                                            <Accordion.Body>
-                                                <CreateProject />
-                                            </Accordion.Body>
-                                        </Accordion.Item>
-                                    </Accordion>
-
-                                    <h3>Project List</h3>
-                                    {projects && <ProjectList projects={projects} />}
+                                    <Routes>
+                                        <Route path="projects" element={
+                                            <>
+                                                <Accordion>
+                                                    <Accordion.Item eventKey="0">
+                                                        <Accordion.Header>Create Project</Accordion.Header>
+                                                        <Accordion.Body>
+                                                            <CreateProject />
+                                                        </Accordion.Body>
+                                                    </Accordion.Item>
+                                                </Accordion>
+                                                <h3>Project List</h3>
+                                                <ProjectList projects={projects} />
+                                            </>
+                                        } />
+                                    </Routes>
                                 </Tab>
                             </Tabs>
                         </Col>
                         <Col className={'col'} sm="12" md="4" lg="4" xl="4" xxl="4">
-                            {notificationsByAuthor ? (
-                                <>
-                                    <DashboardNotifications notifications={notificationsByAuthor} />
-                                </>
-                            ) : ('')}
-
+                            {notificationsByAuthor && <DashboardNotifications notifications={notificationsByAuthor} />}
                         </Col>
                     </Row>
-
+                    <Routes>
+                        <Route path="/" element={<Navigate to="/dashboard/overview" replace />} />
+                    </Routes>
                 </>
             ) : (<NotAuthorized />)}
         </>
     );
-}
+};
 
 export default Dashboard;

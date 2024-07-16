@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 // Component Imports
 import { createPostAsync } from "../../_redux/actions/PostActions";
 import { getNotificationsByAuthorAsync } from "../../_redux/actions/NotificationActions";
-import { selectUserEmail } from "../../_redux/reducers/UserSlice";
+import { isAuthenticated, selectUserEmail } from "../../_redux/reducers/UserSlice";
 
 // Bootstrap Imports
 import { Form, Button } from "react-bootstrap";
@@ -13,6 +13,7 @@ import { Form, Button } from "react-bootstrap";
 const CreatePost = () => {
     const activeUserEmail = useSelector(selectUserEmail);
     const dispatch = useDispatch();
+    const isAuth = useSelector(isAuthenticated)
 
     const initialFormData = {
         id: '',
@@ -45,6 +46,8 @@ const CreatePost = () => {
         <div className="create-post-container">
             <Form onSubmit={handleSubmit}>
 
+                { !isAuth ? <p className="login-message">Please login to create a post.</p> : null }
+
                 <Form.Group controlId="header">
                     <Form.Label>Header</Form.Label>
                     <Form.Control
@@ -53,6 +56,7 @@ const CreatePost = () => {
                         onChange={handleChange}
                         placeholder="Header"
                         required
+                        disabled={!isAuth}
                     />
                 </Form.Group>
 
@@ -64,11 +68,12 @@ const CreatePost = () => {
                         onChange={handleChange}
                         placeholder="Body"
                         required
+                        disabled={!isAuth}
                     />
                 </Form.Group>
 
                 <div className="submit-container">
-                    <Button type="submit" className="btn">Post</Button>
+                    <Button type="submit" className="btn" disabled={!isAuth}>Post</Button>
                 </div>
             </Form>
         </div>

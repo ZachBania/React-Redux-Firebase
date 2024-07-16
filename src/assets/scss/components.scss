@@ -865,6 +865,11 @@ footer {
     border: 0 !important;
     outline: $color_outline solid 1px;
 
+    .login-message {
+      color: $color_primary_dark;
+      padding: .25em .25em 1em .25em;
+    }
+
     div {
       padding: 0 0 .5em 0 !important;
 

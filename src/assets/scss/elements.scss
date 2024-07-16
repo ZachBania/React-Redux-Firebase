@@ -57,6 +57,7 @@ form {
         &:read-only  {
             background: rgba(0,0,0, .05);
         }
+        
     }
 
     .submit-container {
@@ -64,7 +65,14 @@ form {
         flex-wrap: nowrap;
         gap: 1em;
         padding: 1em 0;
+
+        .btn:disabled {
+            background: rgba(0,0,0, .05);
+            border: unset;
+            color: $color_primary_dark;
+        }
     }
+
 }
 
 table, .table {

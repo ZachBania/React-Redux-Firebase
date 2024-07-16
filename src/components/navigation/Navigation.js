@@ -45,7 +45,7 @@ const Navigation = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <ul>
-                            {isAuth ? <li><Link to="/dashboard">Dashboard</Link></li> : ''}
+                            {isAuth ? <li><Link to="/dashboard/overview">Dashboard</Link></li> : ''}
                             <li><Link to="/the-wall">The Wall</Link></li>
                             <li><Link to="/projects">Projects</Link></li>
                         </ul>
@@ -56,11 +56,11 @@ const Navigation = () => {
                         <ul>
                             {isAuth ? (
                                 <>
-                                    <li><Link to="/" onClick={handleLogout}>Logout</Link></li>
+                                    <li><Link onClick={handleLogout}>Logout</Link></li>
                                 </>
                             ) : (
                                 <>
-                                    <li><Link to="/" onClick={handleLogin}>Login</Link></li>
+                                    <li><Link onClick={handleLogin}>Login</Link></li>
                                 </>
                             )}
                         </ul>

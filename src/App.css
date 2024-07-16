@@ -12008,6 +12008,11 @@ form .submit-container {
   gap: 1em;
   padding: 1em 0;
 }
+form .submit-container .btn:disabled {
+  background: rgba(0, 0, 0, 0.05);
+  border: unset;
+  color: #000;
+}
 
 table thead tr, .table thead tr {
   border-color: transparent;
@@ -12827,6 +12832,10 @@ footer .row .col a:focus {
   padding: 0.5em !important;
   border: 0 !important;
   outline: #000 solid 1px;
+}
+.create-post-container form .login-message {
+  color: #000;
+  padding: 0.25em 0.25em 1em 0.25em;
 }
 .create-post-container form div {
   padding: 0 0 0.5em 0 !important;
