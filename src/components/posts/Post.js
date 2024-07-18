@@ -1,16 +1,15 @@
 // Core Imports
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 
 // Component Imports
-import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { updateRating, getRating, getActiveUserRating } from "../../_redux/actions/PostActions";
 import { isAuthenticated, selectUserEmail } from "../../_redux/reducers/UserSlice";
-import { useSelector } from "react-redux";
 
 // Bootstrap Imports
+import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Post = ({ post }) => {
 

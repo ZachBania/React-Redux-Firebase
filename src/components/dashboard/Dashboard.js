@@ -40,7 +40,6 @@ const Dashboard = () => {
 
     const projects = useSelector(state => state.project.projects);
     const postsByAuthor = useSelector(state => state.post.postsByAuthor);
-    console.log("Dashboard postsByAuthor", postsByAuthor)
 
     const notificationsByAuthor = useSelector(state => state.notification.notificationsByAuthor);
 

@@ -2,7 +2,6 @@
 import React from 'react';
 
 // Component Imports
-import { formatNotificationTimestamp } from '../../_redux/actions/NotificationActions';
 
 // Bootstrap Imports
 import Alert from 'react-bootstrap/Alert';

@@ -44,7 +44,7 @@ export const getUserAsync = (userId) => async (dispatch) => {
         if (userDoc.exists) {
             dispatch(getUser({ id: userDoc.id, ...userDoc.data() }));
         } else {
-            console.log('No such document!');
+            dispatch(userError("userDoc was not found"));
         }
     } catch (error) {
         dispatch(userError(error));
@@ -57,7 +57,6 @@ export const updateUserAsync = (user) => async (dispatch) => {
         const userRef = db.collection('Users').doc(user.id);
         await userRef.update(user);
         dispatch(updateUser(user));
-
     } catch (error) {
         dispatch(userError(error));
     }

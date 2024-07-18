@@ -21,7 +21,6 @@ const postSlice = createSlice({
       state.posts = action.payload;
     },
     getPostsByAuthor: (state, action) => {
-      console.log("PostSlice action.payload", action.payload)
       state.postsByAuthor = action.payload;
     },
     createPost: (state, action) => {
@@ -38,11 +37,21 @@ const postSlice = createSlice({
     },
     setPostRating: (state, action) => {
       const { postId, rating, ratingOfActiveUser } = action.payload;
-      const post = state.posts.find(post => post.id === postId);
-      if (post) {
+      const fetchByPosts = state.posts.find(post => post.id == postId);
+      const fetchByPostsByAuthor = state.postsByAuthor.find(post => post.id == postId);
+
+      if(fetchByPosts) {
+        const post = fetchByPosts;
         post.rating = rating;
         post.ratingOfActiveUser = ratingOfActiveUser
       }
+
+      if(fetchByPostsByAuthor) {
+        const post = fetchByPostsByAuthor;
+        post.rating = rating;
+        post.ratingOfActiveUser = ratingOfActiveUser
+      }
+
     },
     postError: (state, action) => {
       console.log(action.payload);

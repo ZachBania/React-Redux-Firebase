@@ -52,7 +52,6 @@ auth.onAuthStateChanged(async (user) => {
       }
     } catch (error) {
       console.error("Error fetching user data:", error);
-      // Handle the error appropriately
     }
   } else {
     store.dispatch(setStateLogout());
