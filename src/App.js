@@ -24,8 +24,6 @@ import Wall from './components/posts/Wall';
 // Bootstrap Imports
 import Container from 'react-bootstrap/Container';
 
-import { motion } from 'framer-motion';
-
 function App() {
   return (
     <>
@@ -36,12 +34,12 @@ function App() {
           <Container>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/the-wall" element={<Wall />} />
               <Route path="/dashboard/*" element={<Dashboard />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/projects/:id" element={<ProjectDetail />} />
               <Route path="/manage-project/:id" element={<ManageProject />} />
               <Route path="/manage-profile/:id" element={<ManageProfile />} />
+              <Route path="/the-wall" element={<Wall />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </Container>
