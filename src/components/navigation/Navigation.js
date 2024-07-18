@@ -56,7 +56,7 @@ const Navigation = () => {
                         <ul>
                             {isAuth ? (
                                 <>
-                                    <li><Link onClick={handleLogout}>Logout</Link></li>
+                                    <li><Link to="/" onClick={handleLogout}>Logout</Link></li>
                                 </>
                             ) : (
                                 <>

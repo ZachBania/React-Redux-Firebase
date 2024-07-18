@@ -1,7 +1,7 @@
 // Core Imports
 import './App.css';
 import React from 'react';
-import { store, persistor} from './_redux/store';
+import { store, persistor } from './_redux/store';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Route, Routes } from 'react-router-dom';
@@ -44,8 +44,8 @@ function App() {
               <Route path="/manage-profile/:id" element={<ManageProfile />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
-            <Footer />
           </Container>
+          <Footer />
 
         </PersistGate>
       </Provider>

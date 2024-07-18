@@ -24,9 +24,8 @@ const ProjectListRow = ({ project }) => {
       {/* <td><p className="description_three">{project.description[2]}</p></td> */}
       <td><p className="excerpt">{project.excerpt}</p></td>
       <td><p className="category_owner">{project.category_owner}</p></td>
-      <td><p className="views">{project.views}</p></td>
+      <td><p className="views">{project.views ? project.views : 0}</p></td>
       {/* <td><p className="meta">{project.meta}</p></td> */}
-      {/* <Link to={`/projects/${project.id}`} className="btn">View Project</Link> */}
     </tr>
 
   );

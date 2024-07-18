@@ -22,12 +22,12 @@ p {
 }
 
 .container {
-  max-width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0;
   position: relative;
 
-  min-height: calc(100vh - 2.75em);
+  min-height: calc(100vh - 6.5em);
   outline: #000 solid 1px;
 }
 
