@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 // Component Imports
 import StaticHeader from '../parts/StaticHeader';
@@ -34,7 +35,7 @@ export default function ProjectDetail() {
                         <Col className={'col'} sm="12" md="12" lg="8" xl="8" xxl="8">
                             <>
                                 {project.description && project.description.map(desc => (
-                                    <p className='description'>{desc}</p>
+                                    <motion.p className='description' initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>{desc}</motion.p>
                                 ))}
 
                             </>
