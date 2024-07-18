@@ -1,6 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { posts: [], post: null };
+const initialState = {
+  posts: [],
+  post: null,
+  postsByAuthor: [],
+};
 
 const sortPostsDesc = (posts) => {
   return posts.slice().sort((a, b) => b.id - a.id);
@@ -15,6 +19,10 @@ const postSlice = createSlice({
     },
     getPosts: (state, action) => {
       state.posts = action.payload;
+    },
+    getPostsByAuthor: (state, action) => {
+      console.log("PostSlice action.payload", action.payload)
+      state.postsByAuthor = action.payload;
     },
     createPost: (state, action) => {
       state.posts.push(action.payload);
@@ -42,5 +50,5 @@ const postSlice = createSlice({
   }
 });
 
-export const { getPost, getPosts, createPost, updatePost, deletePost, setPostRating, postError } = postSlice.actions;
+export const { getPost, getPosts, createPost, updatePost, deletePost, getPostsByAuthor, setPostRating, postError } = postSlice.actions;
 export default postSlice.reducer;

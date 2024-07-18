@@ -1,6 +1,8 @@
 import { db } from '../../_api/firebase';
-import { getPost, getPosts, createPost, updatePost, deletePost, setPostRating, postError } from '../reducers/PostSlice';
+import { getNotificationsByAuthor } from '../reducers/NotificationSlice';
+import { getPost, getPosts, createPost, updatePost, deletePost, getPostsByAuthor, setPostRating, postError } from '../reducers/PostSlice';
 import { createNotification } from './NotificationActions';
+
 
 export const getPostsAsync = () => async (dispatch) => {
     try {
@@ -15,6 +17,21 @@ export const getPostsAsync = () => async (dispatch) => {
     }
 };
 
+export const getPostsByAuthorAsync = (author) => {
+    return async (dispatch) => {
+        try {
+            // add order by id to const snapshot = await db.collection('Notifications').where('author', '==', author).get()
+            const snapshot = await db.collection('Posts').where('author', '==', author).get();
+            let posts = [];
+            snapshot.forEach(doc => {
+                posts.push({ id: doc.id, ...doc.data() });
+            });
+            dispatch(getPostsByAuthor(posts));
+        } catch (error) {
+            dispatch(postError(error));
+        }
+    };
+};
 
 export const createPostAsync = (post) => async (dispatch) => {
     try {
@@ -36,6 +53,68 @@ export const createPostAsync = (post) => async (dispatch) => {
     }
 };
 
+export const deletePostAsync = (post, author) => async (dispatch) => {
+    const post_id = parseInt(post.id);
+    try {
+        //delete post by property id
+        const snapshot = await db.collection('Posts').where('id', '==', post_id).get();
+        snapshot.forEach(async (doc) => {
+            await doc.ref.delete();
+        });
+        dispatch(deletePost(post_id));
+        dispatch(getPostsByAuthorAsync(author));
+        dispatch(createNotification(
+            'danger',
+            'Post Deleted',
+            "Post was deleted.",
+            post.author
+        ));
+    } catch (error) {
+        dispatch(postError(error));
+    }
+}
+
+export const deletePostsByAuthorAsync = (author) => {
+    return async (dispatch) => {
+        try {
+            const snapshot = await db.collection('Posts').where('author', '==', author).get();
+            snapshot.forEach(async (doc) => {
+                await doc.ref.delete();
+            });
+            dispatch(getPostsByAuthorAsync(author));
+            dispatch(createNotification(
+                'danger',
+                'All Author Posts Deleted',
+                "All posts by " + author + " were deleted.",
+                author
+            ));
+        } catch (error) {
+            dispatch(postError(error));
+        }
+    };
+};
+
+export const getRating = (postId, activeUserEmail) => async (dispatch) => {
+    const post_id = parseInt(postId);
+
+    try {
+        const snapshot = await db.collection('Ratings').where('post_id', '==', post_id).get();
+        let totalRating = 0;
+        snapshot.forEach(doc => {
+            totalRating += doc.data().rating;
+        });
+
+        const snapshotActiveUser = await db.collection('Ratings').where('post_id', '==', post_id).where('author', '==', activeUserEmail).get();
+        let ratingOfActiveUser = 0;
+        snapshotActiveUser.forEach(doc => {
+            ratingOfActiveUser = doc.data().rating;
+        });
+        dispatch(setPostRating({ postId: post_id, rating: totalRating, ratingOfActiveUser: ratingOfActiveUser }));
+
+    } catch (error) {
+        dispatch(postError(error));
+    }
+};
 
 export const updateRating = (postId, direction, activeUserEmail) => async (dispatch) => {
     const post_id = parseInt(postId);
@@ -68,27 +147,3 @@ export const updateRating = (postId, direction, activeUserEmail) => async (dispa
     }
 
 };
-
-export const getRating = (postId, activeUserEmail) => async (dispatch) => {
-    const post_id = parseInt(postId);
-
-    try {
-        const snapshot = await db.collection('Ratings').where('post_id', '==', post_id).get();
-        let totalRating = 0;
-        snapshot.forEach(doc => {
-            totalRating += doc.data().rating;
-        });
-
-        const snapshotActiveUser = await db.collection('Ratings').where('post_id', '==', post_id).where('author', '==', activeUserEmail).get();
-        let ratingOfActiveUser = 0;
-        snapshotActiveUser.forEach(doc => {
-            ratingOfActiveUser = doc.data().rating;
-        });
-        dispatch(setPostRating({ postId: post_id, rating: totalRating, ratingOfActiveUser: ratingOfActiveUser }));
-
-    } catch (error) {
-        dispatch(postError(error));
-    }
-};
-
-
