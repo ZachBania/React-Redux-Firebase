@@ -54,10 +54,16 @@ export const createPostAsync = (post) => async (dispatch) => {
 export const deletePostAsync = (post, author) => async (dispatch) => {
     const post_id = parseInt(post.id);
     try {
-        const snapshot = await db.collection('Posts').where('id', '==', post_id).get();
-        snapshot.forEach(async (doc) => {
+        const snapshotPost = await db.collection('Posts').where('id', '==', post_id).get();
+        snapshotPost.forEach(async (doc) => {
             await doc.ref.delete();
         });
+        
+        const snapshotRating = await db.collection('Ratings').where('post_id', '==', post_id).get();
+        snapshotRating.forEach(async (doc) => {
+            await doc.ref.delete();
+        });
+
         dispatch(deletePost(post_id));
         dispatch(getPostsByAuthorAsync(author));
         dispatch(createNotification(
@@ -74,10 +80,16 @@ export const deletePostAsync = (post, author) => async (dispatch) => {
 export const deletePostsByAuthorAsync = (author) => {
     return async (dispatch) => {
         try {
-            const snapshot = await db.collection('Posts').where('author', '==', author).get();
-            snapshot.forEach(async (doc) => {
+            const snapshotPost = await db.collection('Posts').where('author', '==', author).get();
+            snapshotPost.forEach(async (doc) => {
                 await doc.ref.delete();
             });
+
+            const snapshotRating = await db.collection('Rating').where('author', '==', author).get();
+            snapshotRating.forEach(async (doc) => {
+                await doc.ref.delete();
+            });
+
             dispatch(getPostsByAuthorAsync(author));
             dispatch(createNotification(
                 'danger',
